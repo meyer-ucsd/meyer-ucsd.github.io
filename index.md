@@ -1,1 +1,78 @@
-<meta http-equiv="Refresh" content="0; url='http://jacobsschool.ucsd.edu/faculty/faculty_bios/index.sfe?fmp_recid=501'" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title></title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Florian Meyer</div>
+<div class="menu-item"><a href="index.html" class="current">Home</a></div>
+<div class="menu-item"><a href="research.html">Research</a></div>
+<div class="menu-item"><a href="teaching.html">Teaching</a></div>
+<div class="menu-item"><a href="openings.html">Openings</a></div>
+</td>
+<td id="layout-content">
+<p><br /></p>
+<table class="imgtable"><tr><td>
+<img src="FM-Website.jpg" alt="alt text" width="192px" height="288px" />&nbsp;</td>
+<td align="left"><p><b>Florian Meyer, Phd</b> <br /><br /></p>
+<p>Assistant Professor <br /><br />
+<a href="http://scripps.ucsd.edu/">Scripps Institution of Oceanography</a> <br />
+<a href="http://ece.ucsd.edu/">Department of Electrical and Computer Engineering</a> <br />
+<a href="http://www.ucsd.edu/">University of California San Diego</a> <br /><br /></p>
+<p><a href="mailto:flmeyer@ucsd.edu">flmeyer@ucsd.edu</a> <br /></p>
+<p><a href="http://scholar.google.com/citations?user=XnMK9VcAAAAJ/">Google Scholar</a> <br /></p>
+<p><a href="http://www.linkedin.com/in/florian-meyer-b17733b2/">LinkedIn</a> <br /></p>
+</td></tr></table>
+<h2>News</h2>
+<ul>
+<li><p>Jul.&nbsp;2020: New paper on <a href="http://ieeexplore.ieee.org/abstract/document/9098068">scalable data association for extended object tracking</a></p>
+</li>
+<li><p>Jun.&nbsp;2020: Co-chair of the workshop on advances for network localization and navigation at IEEE ICC 2020</p>
+</li>
+<li><p>Jun.&nbsp;2020: <a href="https://www.cmre.nato.int/rockstories-blog-display/524-cmre-dkoe-sto-award">NATO STO Scientific Achievement Team Award</a> (effort lead by P. Braca, A.-L. Jousselme, and L. M. Millefiori)</p>
+</li>
+<li><p>May&nbsp;2020: Invited Webinar: <a href="http://signalprocessingsociety.org/newsletter/2020/05/upcoming-webinar-distributed-localization-and-tracking-mobile-networks/"><i>&ldquo;Distributed Localization and Tracking of Mobile Networks&rdquo;</i></a></p>
+</li>
+<li><p>Mar.&nbsp;2020: Keynote: <i>&ldquo;Bayesian Graph Signal Processing for Information Fusion and Multiobject Tracking&rdquo;</i> at IEEE Aerospace 2020</p>
+</li>
+<li><p>Feb.&nbsp;2020: Special session co-chair at ITA 2020</p>
+</li>
+<li><p>Dec.&nbsp;2019: New paper on <a href="http://ieeexplore.ieee.org/abstract/document/8823946">multipath-based indoor localization and mapping</a></p>
+</li>
+<li><p>Nov.&nbsp;2019: <a href="http://www.theiet.org/publishing/subscribe-or-buy-our-content/journals/iet-premium-awards/">IET Radar, Sonar &amp; Navigation Premium Award</a> for the paper <a href="http://ieeexplore.ieee.org/document/8120073/"><i>Ferri et al.: &ldquo;Cooperative robotic networks for underwater surveillance: an overview&rdquo;</i></a></p>
+</li>
+<li><p>Sep.&nbsp;2019: New paper on <a href="http://ieeexplore.ieee.org/abstract/document/8801913">situational awareness in millimeter wave massive MIMO systems</a></p>
+</li>
+<li><p>Aug.&nbsp;2019: New paper on <a href="http://ieeexplore.ieee.org/abstract/document/8714043">self-tuning algorithms for multisensor-multitarget tracking</a></p>
+</li>
+<li><p>May&nbsp;2019: Co-chair of the workshop on advances for network localization and navigation at IEEE ICC 2019</p>
+</li>
+<li><p>Jan.&nbsp;2019: Appointed as Associated Editor with the <a href="http://isif.org/publications/jaif-editorial-board/">ISIF Journal of Advances in Information Fusion</a></p>
+</li>
+<li><p>Nov.&nbsp;2018: Our work on <a href="http://www.ll.mit.edu/news/new-indoor-navigation-system-works-where-gps-cant-reach">scalable and efficient indoor localization</a> wins a 2018 R&amp;D 100 Award</p>
+</li>
+<li><p>Sep.&nbsp;2018: Paper on <a href="http://ieeexplore.ieee.org/abstract/document/8454389">efficient multisensor localization</a> appeared in the <i>IEEE Signal Processing Magazine</i></p>
+</li>
+<li><p>Jun.&nbsp;2018: Special session co-chair at IEEE SSP 2018</p>
+</li>
+<li><p>May&nbsp;2018: Co-chair of the workshop on advances for network localization and navigation at IEEE ICC 2018</p>
+</li>
+<li><p>Feb.&nbsp;2018: Our work on <a href="http://ieeexplore.ieee.org/abstract/document/8290605/">scalable multiobject tracking</a> was published in the <i>Proceedings of the IEEE</i></p>
+</li>
+</ul>
+<h2>Biography</h2>
+<p>Florian Meyer (S’12–M’15) received the Dipl.- Ing. (M.Sc.) and Ph.D. degrees (with highest honors) in electrical engineering from TU Wien, Vienna, Austria in 2011 and 2015, respectively.</p>
+<p>He is an Assistant Professor in Applied Ocean Sciences with University of California San Diego, La Jolla, CA, jointly between the Scripps Institution of Oceanography and the Electrical and Computer Engineering Department. From 2017 to 2019 he was a Postdoctoral Fellow and Associate with the Laboratory for Information &amp; Decision Systems at the Massachusetts Institute of Technology, Cambridge, MA, and from 2016 to 2017 he was a Research Scientist with the NATO Centre for Maritime Research and Experimentation, La Spezia, Italy.</p>
+<p>Dr. Meyer was a keynote speaker at the IEEE Aerospace Conference in 2020. He served on the technical program committees of several IEEE conferences and as a co-chair of the IEEE Workshop on Advances in Network Localization and Navigation at the IEEE International Conference on Communications in 2018, 2019, and 2020. He is an Associate Editor for the ISIF Journal of Advances in Information Fusion and an Erwin Schrödinger Fellow. His research interests include statistical signal processing, high-dimensional and nonlinear estimation, applied ocean sciences, inference on graphs, machine perception, multiobject tracking, network localization and navigation, multiagent systems. </p>
+</td>
+</tr>
+</table>
+</body>
+</html>
