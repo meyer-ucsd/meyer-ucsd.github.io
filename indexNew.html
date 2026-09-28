@@ -40,7 +40,26 @@
   nav ul { display: flex; gap: 4px; list-style: none; }
   nav ul a { font-size: 14px; color: var(--soft); padding: 7px 14px; border-radius: 20px; transition: all .2s; }
   nav ul a:hover { background: rgba(127,240,224,.12); color: var(--glow); }
-  @media (max-width: 1080px) { nav ul { display: none; } }
+  /* phones and narrow windows: the links move into a panel opened by the Menu button */
+  .nav-toggle { display: none; }
+  @media (max-width: 1080px) {
+    nav { gap: 14px; padding: 8px 8px 8px 18px; }
+    .nav-toggle { display: inline-flex; align-items: center; gap: 8px; font: 500 13px var(--body); color: var(--soft); background: var(--glass); border: 1px solid var(--glass-b); border-radius: 20px; padding: 7px 13px; cursor: pointer; transition: color .2s, border-color .2s; }
+    .nav-toggle:hover, .nav-toggle:focus-visible, nav.open .nav-toggle { color: var(--glow); border-color: rgba(127,240,224,.45); outline: none; }
+    .nav-toggle i { position: relative; width: 14px; height: 8px; }
+    .nav-toggle i::before, .nav-toggle i::after { content: ""; position: absolute; left: 0; right: 0; height: 1.5px; border-radius: 1px; background: currentColor; transition: transform .25s; }
+    .nav-toggle i::before { top: 0; }
+    .nav-toggle i::after { bottom: 0; }
+    nav.open .nav-toggle i::before { transform: translateY(3.25px) rotate(45deg); }
+    nav.open .nav-toggle i::after { transform: translateY(-3.25px) rotate(-45deg); }
+    nav ul { display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; flex-direction: column; gap: 2px; padding: 8px;
+      border-radius: 22px; background: #041826; border: 1px solid var(--glass-b); box-shadow: 0 24px 60px -20px rgba(0,0,0,.6); }
+    nav.open ul { display: flex; animation: menu-in .25s ease-out; }
+    nav ul a { display: block; font-size: 15px; padding: 11px 16px; border-radius: 14px; }
+  }
+  @media (max-width: 359px) { .nav-toggle span { display: none; } }
+  @keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } }
+  @media (prefers-reduced-motion: reduce) { nav.open ul { animation: none; } .nav-toggle i::before, .nav-toggle i::after { transition: none; } }
 
   /* depth gauge */
   .gauge { position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 20; height: 46vh; width: 60px; font-family: var(--mono); font-size: 10px; color: var(--muted); }
@@ -51,13 +70,13 @@
   @media (max-width: 900px) { .gauge { display: none; } }
 
   /* hero */
-  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding: 88px 0 100px; } /* keeps the text clear of the fixed nav and the scroll hint */
   #guide { position: absolute; inset: 0; width: 100%; height: 100%; }
   .hero .wrap { position: relative; z-index: 2; width: 100%; }
   .tagline { font-family: var(--mono); font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--glow); }
   h1 { font-family: var(--display); font-weight: 300; font-size: clamp(46px, 8vw, 112px); line-height: .98; letter-spacing: -.04em; margin: 20px 0 28px; max-width: 900px; }
   h1 b { font-weight: 600; background: linear-gradient(90deg, #aef7ec, #7ff0e0 40%, #8fd3ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .hero p.lede { font-size: clamp(17px, 1.7vw, 21px); color: var(--soft); max-width: 600px; }
+  .hero p.lede { font-size: clamp(17px, 1.7vw, 21px); color: var(--soft); max-width: 640px; }
   .hero .row { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
   .pill { padding: 13px 22px; border-radius: 30px; font-size: 15px; font-weight: 500; border: 1px solid var(--glass-b); background: var(--glass); backdrop-filter: blur(8px); transition: all .25s; }
   .pill.solid { background: var(--glow); color: #03202c; border-color: var(--glow); }
@@ -644,7 +663,8 @@
 
 <nav>
   <a href="#top" class="logo"><i></i>Situational Awareness Lab</a>
-  <ul>
+  <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links"><i></i><span>Menu</span></button>
+  <ul id="nav-links">
     <li><a href="#research">Research</a></li>
     <li><a href="#news">News</a></li>
     <li><a href="#people">People</a></li>
@@ -667,7 +687,7 @@
   <div class="wrap">
     <div class="tagline">UC San Diego · Scripps Oceanography · ECE</div>
     <h1>Situational <b>Awareness</b> Laboratory</h1>
-    <p class="lede">We develop statistical signal processing and machine learning methods that help autonomous systems perceive, localize, and understand their environment, in the ocean and beyond.</p>
+    <p class="lede">We conduct interdisciplinary research at the intersection of signal processing, machine learning, and ocean science, developing methods that help autonomous systems perceive, localize, and understand their environment, in the ocean and beyond.</p>
     <div class="row">
       <a class="pill solid" href="#research">Our research</a>
       <a class="pill" href="#join">Join the lab</a>
@@ -1012,6 +1032,7 @@
       <button type="button" class="mate" data-person="luisa-watkins" aria-haspopup="dialog" aria-controls="profile"><span class="av">LW<img src="photos/luisa-watkins.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Luisa Watkins</b><small>PhD · Signal &amp; Image Processing</small><span class="more">Profile</span></button>
       <button type="button" class="mate" data-person="shaoxiu-wei" aria-haspopup="dialog" aria-controls="profile"><span class="av">SW<img src="photos/shaoxiu-wei.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Shaoxiu Wei</b><small>PhD · Signal &amp; Image Processing</small><span class="more">Profile</span></button>
       <button type="button" class="mate" data-person="clair-ma" aria-haspopup="dialog" aria-controls="profile"><span class="av">CM<img src="photos/clair-ma.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Clair Ma</b><small>PhD · Applied Ocean Sciences</small><span class="more">Profile</span></button>
+      <button type="button" class="mate" data-person="ryan-pai" aria-haspopup="dialog" aria-controls="profile"><span class="av">RP<img src="photos/ryan-pai.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Ryan Pai</b><small>PhD · Signal &amp; Image Processing</small><span class="more">Profile</span></button>
       <button type="button" class="mate" data-person="khoa-nguyen" aria-haspopup="dialog" aria-controls="profile"><span class="av">KN<img src="photos/khoa-nguyen.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Khoa Nguyen</b><small>PhD · Machine Learning &amp; Data Science</small><span class="more">Profile</span></button>
       <button type="button" class="mate" data-person="avik-ghosh" aria-haspopup="dialog" aria-controls="profile"><span class="av">AG<img src="photos/avik-ghosh.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Avik Ghosh</b><small>MS · Signal &amp; Image Processing</small><span class="more">Profile</span></button>
     </div>
@@ -1201,6 +1222,18 @@
   requestAnimationFrame(draw);
 })();
 
+/* ---------- phone menu ---------- */
+(() => {
+  const nav = document.querySelector('nav'), btn = nav.querySelector('.nav-toggle');
+  const set = open => { nav.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+  set(false);
+  btn.addEventListener('click', () => set(!nav.classList.contains('open')));
+  nav.querySelectorAll('ul a').forEach(a => a.addEventListener('click', () => set(false)));   // jump to the section and close
+  document.addEventListener('click', e => { if (!nav.contains(e.target)) set(false); });        // tap outside closes
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { set(false); btn.focus(); } });
+  matchMedia('(min-width: 1081px)').addEventListener('change', e => { if (e.matches) set(false); });
+})();
+
 /* ---------- depth gauge ---------- */
 (() => {
   const m = document.getElementById('gm'), v = document.getElementById('gv'), MAX = 4000;
@@ -1240,6 +1273,7 @@ const PEOPLE = {
   'shaoxiu-wei':   { bio: '', interests: [], education: [], links: {} },
   'luisa-watkins': { bio: '', interests: [], education: [], links: {} },
   'khoa-nguyen':   { bio: '', interests: [], education: [], links: {} },
+  'ryan-pai':      { bio: '', interests: [], education: [], links: {} },
   'avik-ghosh':    { bio: '', interests: [], education: [], links: {} },
 };
 (() => {
