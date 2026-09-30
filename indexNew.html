@@ -507,10 +507,11 @@
   .chips span { font-size: 12.5px; padding: 6px 12px; border-radius: 20px; background: rgba(127,240,224,.08); border: 1px solid rgba(127,240,224,.2); color: #c8f5ee; }
   .pi .links { display: flex; gap: 18px; margin-top: 18px; font-size: 14px; font-weight: 500; }
   .pi .links a { color: var(--glow); }
-  @media (max-width: 800px) { .pi { grid-template-columns: 1fr; } .pi .ph { max-width: 180px; } }
+  @media (max-width: 800px) { .pi { grid-template-columns: 1fr; } .pi .ph { width: 100%; max-width: 180px; margin: 0 auto; } }
 
-  .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-top: 22px; }
-  .mate { font: inherit; color: inherit; background: none; width: 100%; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; padding: 24px 12px 18px; border-radius: 18px; border: 1px solid transparent; transition: all .3s; }
+  /* student cards: fixed-width cards in centred rows, so a row that is not full never leaves one card stranded at the left (7 fit in one row from ~1200 px) */
+  .team { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 12px; margin-top: 22px; }
+  .mate { flex: 0 0 142px; font: inherit; color: inherit; background: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; padding: 24px 6px 18px; border-radius: 18px; border: 1px solid transparent; transition: all .3s; }
   .mate:hover, .mate:focus-visible { border-color: var(--glass-b); background: var(--glass); }
   .mate:focus-visible { outline: 2px solid var(--glow); outline-offset: 2px; }
   .mate .av { width: 128px; height: 128px; margin: 0 auto 16px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-weight: 600; font-size: 30px; color: #03202c;
@@ -907,7 +908,7 @@
         </div>
         <div class="body">
           <h3>Multipath-Aided SLAM</h3>
-          <p>We treat reflections as useful information. Multipath-based SLAM models each specular reflection as a signal from a virtual anchor, which lets a single receiver localize itself and map its surroundings at the same time. We develop direct and adaptive multipath-based SLAM algorithms for distributed MIMO systems, indoor positioning, and underwater environments.</p>
+          <p>In wireless communication, multipath is usually treated as a nuisance; we treat reflections as useful information. Multipath-based SLAM models each specular reflection as a signal from a virtual anchor, which lets a single receiver localize itself and map its surroundings at the same time. We develop direct and adaptive multipath-based SLAM algorithms for distributed MIMO systems, indoor positioning, and underwater environments.</p>
           <details><summary>KEY PAPERS</summary><ul>
             <li>Adaptive multipath-based SLAM for distributed MIMO systems <span>· IEEE TWC 2026</span></li>
             <li>Direct multipath-based SLAM <span>· IEEE TSP 2025</span></li>
@@ -926,9 +927,9 @@
       <h2>Latest <b>news</b></h2>
     </div>
     <ol class="news rise">
-      <li class="news-item" data-k="project"><time>Sep. 2026</time><span class="nk">Project</span><p>New ONR project <i>&ldquo;Undersea SLAM and Terrain-Aided Navigation Using Side-Scan and Bathymetric Data&rdquo;</i></p></li>
-      <li class="news-item" data-k="project"><time>Sep. 2026</time><span class="nk">Project</span><p>New ONR project <i>&ldquo;Range-Dependent Estimation for Ocean Acoustics&rdquo;</i></p></li>
-      <li class="news-item" data-k="project"><time>Sep. 2026</time><span class="nk">Project</span><p>New NSF project <i>&ldquo;Scalable Particle Flow for Active SLAM with Marine Robots&rdquo;</i></p></li>
+      <li class="news-item" data-k="project"><time>Sep. 2026</time><span class="nk">Project</span><p>New ONR project on underwater navigation</p></li>
+      <li class="news-item" data-k="project"><time>Sep. 2026</time><span class="nk">Project</span><p>New ONR project on inverse problems in oceanography</p></li>
+      <li class="news-item" data-k="project"><time>Sep. 2026</time><span class="nk">Project</span><p>New NSF project on underwater navigation</p></li>
       <li class="news-item" data-k="lab"><time>Jul. 2026</time><span class="nk">Lab</span><p>PI Meyer is visiting the <a target="_blank" rel="noopener" href="https://www.cam.ac.uk/">University of Cambridge</a></p></li>
       <li class="news-item" data-k="award"><time>Jun. 2026</time><span class="nk">Award</span><p>Shaoxiu Wei's paper on neural-enhanced track-before-detect wins the <a target="_blank" rel="noopener" href="https://isif.org/awards/jean-pierre-le-cadre-award#recipients">Best Paper Competition</a> at ISIF FUSION 2026</p></li>
       <li class="news-item" data-k="paper"><time>May 2026</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://pubs.aip.org/asa/jasa/article/159/5/4736/3393046">range-dependent geoacoustic inversion</a></p></li>
@@ -1035,6 +1036,7 @@
       <button type="button" class="mate" data-person="ryan-pai" aria-haspopup="dialog" aria-controls="profile"><span class="av">RP<img src="photos/ryan-pai.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Ryan Pai</b><small>PhD · Signal &amp; Image Processing</small><span class="more">Profile</span></button>
       <button type="button" class="mate" data-person="khoa-nguyen" aria-haspopup="dialog" aria-controls="profile"><span class="av">KN<img src="photos/khoa-nguyen.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Khoa Nguyen</b><small>PhD · Machine Learning &amp; Data Science</small><span class="more">Profile</span></button>
       <button type="button" class="mate" data-person="avik-ghosh" aria-haspopup="dialog" aria-controls="profile"><span class="av">AG<img src="photos/avik-ghosh.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Avik Ghosh</b><small>MS · Signal &amp; Image Processing</small><span class="more">Profile</span></button>
+      <button type="button" class="mate" data-person="mitchell-turton" aria-haspopup="dialog" aria-controls="profile"><span class="av">MT<img src="photos/mitchell-turton.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Mitchell Turton</b><small>Undergraduate Researcher</small><span class="more">Profile</span></button>
     </div>
 
     <div class="sub">Alumni</div>
@@ -1275,6 +1277,7 @@ const PEOPLE = {
   'khoa-nguyen':   { bio: '', interests: [], education: [], links: {} },
   'ryan-pai':      { bio: '', interests: [], education: [], links: {} },
   'avik-ghosh':    { bio: '', interests: [], education: [], links: {} },
+  'mitchell-turton': { bio: '', interests: [], education: [], links: {} },
 };
 (() => {
   const drawer = document.getElementById('profile'), scrim = document.getElementById('profile-scrim');
