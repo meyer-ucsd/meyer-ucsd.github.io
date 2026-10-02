@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Situational Awareness Laboratory</title>
-<meta name="description" content="The Situational Awareness Laboratory at UC San Diego develops statistical signal processing and machine learning methods for multiobject tracking, underwater navigation, inverse problems in oceanography, and multipath-aided SLAM.">
+<title>Situational Awareness Laboratory | Florian Meyer, UC San Diego</title>
+<meta name="description" content="The Situational Awareness Laboratory at UC San Diego, led by Florian Meyer, conducts interdisciplinary research in signal processing, machine learning, and ocean science: multiobject tracking, underwater navigation, inverse problems in oceanography, and multipath-based SLAM.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -91,6 +91,8 @@
   h2 { font-family: var(--display); font-weight: 300; font-size: clamp(34px, 5vw, 64px); letter-spacing: -.03em; line-height: 1.04; max-width: 800px; }
   h2 b { font-weight: 600; }
   .lead { color: var(--soft); font-size: 18px; max-width: 640px; margin-top: 18px; }
+  .lead a { color: var(--text); text-decoration: underline; text-decoration-color: rgba(127,240,224,.4); text-underline-offset: 3px; transition: color .2s; }
+  .lead a:hover { color: var(--glow); }
 
   /* approach */
   .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
@@ -112,7 +114,6 @@
   .tile:hover { transform: translateY(-4px); border-color: rgba(127,240,224,.4); }
   .tile .vis { height: 190px; position: relative; border-bottom: 1px solid var(--glass-b); background: radial-gradient(ellipse at 50% 120%, rgba(127,240,224,.1), transparent 70%); }
   .tile .vis svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .tile .num { position: absolute; top: 16px; left: 20px; font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .1em; }
   .tile .body { padding: 28px 30px 30px; flex: 1; display: flex; flex-direction: column; }
   .tile h3 { font-family: var(--display); font-weight: 600; font-size: 25px; letter-spacing: -.015em; margin-bottom: 12px; }
   .tile p { color: var(--soft); font-size: 15.5px; }
@@ -123,6 +124,8 @@
   .tile details[open] summary::before { transform: rotate(45deg); }
   .tile details ul { list-style: none; margin-top: 12px; }
   .tile details li { font-size: 13.5px; color: var(--soft); padding: 8px 0; border-top: 1px solid rgba(160,225,240,.1); }
+  .tile details li a { text-decoration: underline; text-decoration-color: rgba(127,240,224,.4); text-underline-offset: 3px; transition: color .2s; }
+  .tile details li a:hover { color: var(--glow); }
   .tile details li span { color: var(--muted); font-family: var(--mono); font-size: 11.5px; }
   @media (max-width: 860px) { .tiles { grid-template-columns: 1fr; } }
 
@@ -527,6 +530,9 @@
   .alum { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 32px; margin-top: 14px; }
   .alum div { padding: 12px 0; border-bottom: 1px solid rgba(160,225,240,.1); font-size: 15px; }
   .alum small { display: block; color: var(--muted); font-size: 12.5px; }
+  .alum a { text-decoration: underline; text-decoration-color: rgba(127,240,224,.4); text-underline-offset: 3px; transition: color .2s; }
+  .alum a:hover { color: var(--glow); }
+  .sub.next { margin-top: 36px; }   /* second and third alumni group sit a little closer */
 
   /* student profile: side panel opened from the student cards */
   .scrim { position: fixed; inset: 0; z-index: 60; background: rgba(2,10,18,.6); backdrop-filter: blur(3px); opacity: 0; transition: opacity .35s; }
@@ -575,6 +581,13 @@
   .plist { list-style: none; }
   .plist li { display: grid; grid-template-columns: 14px 1fr auto; gap: 18px; padding: 18px 20px; border-radius: 14px; transition: background .2s; align-items: baseline; }
   .plist li:hover { background: var(--glass); }
+  /* each paper links to its publisher page; the link is stretched over the whole row */
+  .plist li { position: relative; }
+  .plist .t a { transition: color .2s; }
+  .plist .t a::after { content: ""; position: absolute; inset: 0; border-radius: 14px; }
+  .plist li:hover .t a, .plist .t a:focus-visible { color: var(--glow); }
+  .plist .t a:focus-visible { outline: none; }
+  .plist .t a:focus-visible::after { outline: 2px solid var(--glow); outline-offset: -2px; }
   .plist li.hide { display: none; }
   .plist .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 7px; }
   .plist .t { font-weight: 500; font-size: 16px; }
@@ -609,15 +622,16 @@
   @media (max-width: 760px) { .news-item { grid-template-columns: auto 1fr; gap: 6px 12px; padding: 12px 8px; } .news-item p { grid-column: 1 / -1; } .news-more { margin-left: 28px; } }
 
   /* teaching */
-  .courses { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin-top: 52px; }
+  .courses { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin-top: 18px; }
   .course { padding: 24px 26px; border-radius: 18px; border: 1px solid var(--glass-b); background: var(--glass); display: flex; flex-direction: column; gap: 6px; transition: border-color .3s, transform .3s; }
   .course:hover { border-color: rgba(127,240,224,.4); transform: translateY(-3px); }
   .course .top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; }
   .course .code { font-family: var(--mono); font-size: 13px; color: var(--glow); letter-spacing: .04em; white-space: nowrap; }
-  .course .lvl { font-size: 11.5px; padding: 3px 10px; border-radius: 12px; border: 1px solid var(--glass-b); color: var(--soft); white-space: nowrap; }
-  .course .lvl.ug { border-color: rgba(255,201,138,.4); color: #ffc98a; }
+  .course .lvl { font-size: 11.5px; padding: 3px 10px; border-radius: 12px; border: 1px solid rgba(255,201,138,.4); color: #ffc98a; white-space: nowrap; }   /* Graduate: amber */
+  .course .lvl.ug { border-color: var(--glass-b); color: var(--soft); }   /* Undergraduate: grey */
   .course h3 { font-family: var(--display); font-weight: 600; font-size: 19px; letter-spacing: -.01em; line-height: 1.3; margin: 4px 0 2px; }
   .course .terms { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .course .ta { font-size: 13px; color: var(--soft); margin-top: 2px; }
   .course a { margin-top: auto; padding-top: 10px; font-size: 13.5px; font-weight: 500; color: var(--glow); }
   .course a:hover { text-decoration: underline; }
 
@@ -652,8 +666,11 @@
   .addr { margin-top: 44px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.9; }
 
   .seabed { display: block; width: 100%; height: 120px; margin-top: 40px; }
-  footer { background: #01060b; padding: 26px 0 40px; font-size: 13px; color: var(--muted); }
+  footer { background: #01060b; padding: 36px 0 40px; font-size: 13px; color: var(--muted); }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  /* official UC San Diego logo (white version for dark backgrounds), unaltered, on its own row */
+  footer .ucsd { flex-basis: 100%; margin-bottom: 14px; }
+  footer .ucsd img { display: block; height: 32px; width: auto; }
 
   .rise { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
   .rise.in { opacity: 1; transform: none; }
@@ -686,7 +703,7 @@
 <header class="hero" id="top">
   <canvas id="guide" aria-hidden="true"></canvas>
   <div class="wrap">
-    <div class="tagline">UC San Diego · Scripps Oceanography · ECE</div>
+    <div class="tagline">UC San Diego · Scripps Institution of Oceanography · Department of Electrical and Computer Engineering</div>
     <h1>Situational <b>Awareness</b> Laboratory</h1>
     <p class="lede">We conduct interdisciplinary research at the intersection of signal processing, machine learning, and ocean science, developing methods that help autonomous systems perceive, localize, and understand their environment, in the ocean and beyond.</p>
     <div class="row">
@@ -701,21 +718,21 @@
   <div class="wrap rise">
     <div class="depth-tag">200 m · APPROACH</div>
     <h2>Principled inference for <b>signals that travel through complex environments</b></h2>
-    <p class="lead">Sensor data from the ocean is sparse, noisy, and ambiguous. Our lab combines rigorous probabilistic modeling with scalable algorithms and data-driven learning, and we test our methods on real data collected at sea.</p>
+    <p class="lead">Sensor data from challenging environments like the ocean is sparse, noisy, and ambiguous. Led by <a href="#people">Florian Meyer</a>, our lab combines rigorous probabilistic modeling with scalable algorithms and data-driven learning. We test our methods on real-world data, including measurements collected at sea.</p>
     <div class="pillars">
       <div class="pillar">
         <svg class="ico" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="10" r="4"/><circle cx="34" cy="10" r="4"/><rect x="17" y="6" width="8" height="8"/><path d="M12 10h5M25 10h5M11 13l7 15M31 13l-7 15"/><g fill="currentColor" stroke="none"><circle cx="21" cy="33.5" r="1.6"/><circle cx="17.6" cy="31.4" r="1.3"/><circle cx="24.6" cy="31" r="1.2"/><circle cx="18.2" cy="36.4" r="1.2"/><circle cx="24.2" cy="36.6" r="1.3"/><circle cx="21.2" cy="29.6" r="1.1"/><circle cx="27.6" cy="34" r="1" opacity=".7"/><circle cx="14.6" cy="34.2" r="1" opacity=".7"/><circle cx="21" cy="39.4" r="1" opacity=".7"/><circle cx="12.6" cy="30.8" r=".8" opacity=".45"/><circle cx="29.4" cy="37.8" r=".8" opacity=".45"/></g></svg>
-        <h3>Scalable inference</h3>
+        <h3>Scalable Inference</h3>
         <p>Factor graphs and particle-based methods for Bayesian inference in high-dimensional problems with an unknown number of parameters.</p>
       </div>
       <div class="pillar">
         <svg class="ico" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 30 C 10 10, 16 10, 21 21 S 32 32, 39 12"/><circle cx="9" cy="17" r="2" fill="currentColor"/><circle cx="21" cy="21" r="2" fill="currentColor"/><circle cx="33" cy="24" r="2" fill="currentColor"/></svg>
-        <h3>Physics-informed learning</h3>
+        <h3>Physics-Informed Learning</h3>
         <p>Neural networks that improve model-based estimators without giving up interpretability or calibrated uncertainty.</p>
       </div>
       <div class="pillar">
         <svg class="ico" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 14 q 4.5 -4 9 0 t 9 0 t 9 0 t 9 0"/><path d="M21 14 V34"/><circle cx="21" cy="36" r="2"/><path d="M14 26 a 9 9 0 0 1 14 0" opacity=".6"/><path d="M10 30 a 14 14 0 0 1 22 0" opacity=".35"/></svg>
-        <h3>At-sea validation</h3>
+        <h3>At-Sea Validation</h3>
         <p>Algorithms evaluated on data from hydrophones, vector sensors, side-scan sonar, and towed sources, collected in real ocean environments and by autonomous robots.</p>
       </div>
     </div>
@@ -738,7 +755,6 @@
 
       <article class="tile rise">
         <div class="vis">
-          <span class="num">01</span>
           <svg viewBox="0 0 400 190" fill="none" preserveAspectRatio="xMidYMid meet">
             <defs>
               <linearGradient id="mot-c-gt" gradientUnits="userSpaceOnUse" x1="-300" y1="0" x2="-40" y2="0"><stop offset="0" stop-color="#7ff0e0" stop-opacity="0"/><stop offset="1" stop-color="#7ff0e0"/></linearGradient>
@@ -776,16 +792,15 @@
           <h3>Multiobject Tracking</h3>
           <p>Our goal is to detect and follow an unknown, time-varying number of objects from noisy, ambiguous data. We develop belief propagation methods that solve data association and sparse signal reconstruction at scale and combine them with neural networks that learn prior information as well as motion and measurement models. Applications include sonar, marine mammal monitoring, maritime surveillance, and autonomous driving.</p>
           <details><summary>KEY PAPERS</summary><ul>
-            <li>Bayesian multiobject tracking with neural-enhanced motion and measurement models <span>· IEEE TSP 2026</span></li>
-            <li>Neural enhanced belief propagation for multiobject tracking <span>· IEEE TSP 2024</span></li>
-            <li>Message passing algorithms for scalable multitarget tracking <span>· Proc. IEEE 2018</span></li>
+            <li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11353058">Bayesian multiobject tracking with neural-enhanced motion and measurement models</a> <span>· IEEE TSP 2026</span></li>
+            <li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10258113">Neural enhanced belief propagation for multiobject tracking</a> <span>· IEEE TSP 2024</span></li>
+            <li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/8290605">Message passing algorithms for scalable multitarget tracking</a> <span>· Proc. IEEE 2018</span></li>
           </ul></details>
         </div>
       </article>
 
       <article class="tile rise">
         <div class="vis">
-          <span class="num">02</span>
           <svg viewBox="0 0 400 190" fill="none" preserveAspectRatio="xMidYMid meet">
             <defs>
               <linearGradient id="nav-b-sky" gradientUnits="userSpaceOnUse" x1="0" y1="55.5" x2="0" y2="60"><stop offset="0" stop-color="#e6f1f5" stop-opacity=".7"/><stop offset="1" stop-color="#e6f1f5" stop-opacity="0"/></linearGradient>
@@ -816,15 +831,14 @@
           <h3>Underwater Navigation</h3>
           <p>GPS signals do not reach below the surface, but sound does. We develop navigation methods for autonomous underwater vehicles that use side-scan sonar landmarks, observations from a single acoustic receiver, and physics-based propagation models. The goal is accurate positioning with as little infrastructure as possible.</p>
           <details><summary>KEY PAPERS</summary><ul>
-            <li>A landmark-aided navigation approach using side-scan sonar <span>· IEEE JOE 2025</span></li>
-            <li>Statistical model and estimation method for ranging a moving ship using a single acoustic receiver in shallow water <span>· JASA 2025</span></li>
+            <li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11129657">A landmark-aided navigation approach using side-scan sonar</a> <span>· IEEE JOE 2025</span></li>
+            <li><a target="_blank" rel="noopener" href="https://pubs.aip.org/jasa/article/158/3/2448/3364499/Statistical-model-and-estimation-method-for">Statistical model and estimation method for ranging a moving ship using a single acoustic receiver in shallow water</a> <span>· JASA 2025</span></li>
           </ul></details>
         </div>
       </article>
 
       <article class="tile rise">
         <div class="vis">
-          <span class="num">03</span>
           <svg viewBox="0 0 400 190" fill="none" preserveAspectRatio="xMidYMid meet">
             <defs>
               <linearGradient id="geoSeabed" gradientUnits="userSpaceOnUse" x1="0" y1="120" x2="0" y2="320"><stop offset="0.075" stop-color="#ffc98a" stop-opacity="0.050"/><stop offset="0.100" stop-color="#ffc98a" stop-opacity="0.051"/><stop offset="0.125" stop-color="#ffc98a" stop-opacity="0.060"/><stop offset="0.140" stop-color="#ffc98a" stop-opacity="0.071"/><stop offset="0.150" stop-color="#ffc98a" stop-opacity="0.080"/><stop offset="0.160" stop-color="#ffc98a" stop-opacity="0.089"/><stop offset="0.175" stop-color="#ffc98a" stop-opacity="0.100"/><stop offset="0.200" stop-color="#ffc98a" stop-opacity="0.109"/><stop offset="0.225" stop-color="#ffc98a" stop-opacity="0.110"/></linearGradient>
@@ -860,17 +874,16 @@
           <h3>Inverse Problems in Oceanography</h3>
           <p>Sound carries information about the ocean it travels through. We solve inverse problems in oceanography: we infer seabed and sediment properties, sound-speed structure, and source parameters from acoustic data using Bayesian methods that embed numerical models of propagation physics and quantify uncertainty. Our work focuses on sequential settings with moving sources and environments that change with range.</p>
           <details><summary>KEY PAPERS</summary><ul>
-            <li>Range-dependent matched-field geoacoustic inversion using a tonal source towed on circular tracks <span>· JASA 2026</span></li>
-            <li>Single-hydrophone Bayesian matched-field geoacoustic inversion <span>· JASA-EL 2025</span></li>
-            <li>Sequential source localization in shallow water by single-receiver probabilistic focalization <span>· JASA 2025</span></li>
-            <li>Probabilistic focalization for shallow water localization <span>· JASA 2021</span></li>
+            <li><a target="_blank" rel="noopener" href="https://pubs.aip.org/jasa/article/159/5/4736/3393046/Range-dependent-matched-field-geoacoustic">Range-dependent matched-field geoacoustic inversion using a tonal source towed on circular tracks</a> <span>· JASA 2026</span></li>
+            <li><a target="_blank" rel="noopener" href="https://pubs.aip.org/jel/article/5/10/108601/3365760/Single-hydrophone-Bayesian-matched-field">Single-hydrophone Bayesian matched-field geoacoustic inversion</a> <span>· JASA-EL 2025</span></li>
+            <li><a target="_blank" rel="noopener" href="https://pubs.aip.org/jasa/article/157/4/2819/3344175/Sequential-source-localization-in-shallow-water-by">Sequential source localization in shallow water by single-receiver probabilistic focalization</a> <span>· JASA 2025</span></li>
+            <li><a target="_blank" rel="noopener" href="https://pubs.aip.org/jasa/article/150/2/1057/615488/Probabilistic-focalization-for-shallow-water">Probabilistic focalization for shallow water localization</a> <span>· JASA 2021</span></li>
           </ul></details>
         </div>
       </article>
 
       <article class="tile rise">
         <div class="vis">
-          <span class="num">04</span>
           <svg viewBox="0 0 400 190" fill="none" preserveAspectRatio="xMidYMid meet">
             <path class="slam-a-trail" d="M124 164A109 109 0 0 0 184 146A109 109 0 0 1 244 128" pathLength="127.08" stroke-dasharray="127.08 127.08" stroke="#7ff0e0" stroke-opacity=".45" stroke-width="1.2"/>
             <g stroke="#e6f1f5" stroke-width="2" stroke-opacity=".3">
@@ -907,12 +920,12 @@
           </svg>
         </div>
         <div class="body">
-          <h3>Multipath-Aided SLAM</h3>
+          <h3>Multipath-Based SLAM</h3>
           <p>In wireless communication, multipath is usually treated as a nuisance; we treat reflections as useful information. Multipath-based SLAM models each specular reflection as a signal from a virtual anchor, which lets a single receiver localize itself and map its surroundings at the same time. We develop direct and adaptive multipath-based SLAM algorithms for distributed MIMO systems, indoor positioning, and underwater environments.</p>
           <details><summary>KEY PAPERS</summary><ul>
-            <li>Adaptive multipath-based SLAM for distributed MIMO systems <span>· IEEE TWC 2026</span></li>
-            <li>Direct multipath-based SLAM <span>· IEEE TSP 2025</span></li>
-            <li>A belief propagation algorithm for multipath-based SLAM <span>· IEEE TWC 2019</span></li>
+            <li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11495048">Adaptive multipath-based SLAM for distributed MIMO systems</a> <span>· IEEE TWC 2026</span></li>
+            <li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10932864">Direct multipath-based SLAM</a> <span>· IEEE TSP 2025</span></li>
+            <li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/8823946">A belief propagation algorithm for multipath-based SLAM</a> <span>· IEEE TWC 2019</span></li>
           </ul></details>
         </div>
       </article>
@@ -930,84 +943,66 @@
       <li class="news-item" data-k="project"><time>Sep. 2026</time><span class="nk">Project</span><p>New ONR project on underwater navigation</p></li>
       <li class="news-item" data-k="project"><time>Sep. 2026</time><span class="nk">Project</span><p>New ONR project on inverse problems in oceanography</p></li>
       <li class="news-item" data-k="project"><time>Sep. 2026</time><span class="nk">Project</span><p>New NSF project on underwater navigation</p></li>
-      <li class="news-item" data-k="lab"><time>Jul. 2026</time><span class="nk">Lab</span><p>PI Meyer is visiting the <a target="_blank" rel="noopener" href="https://www.cam.ac.uk/">University of Cambridge</a></p></li>
-      <li class="news-item" data-k="award"><time>Jun. 2026</time><span class="nk">Award</span><p>Shaoxiu Wei's paper on neural-enhanced track-before-detect wins the <a target="_blank" rel="noopener" href="https://isif.org/awards/jean-pierre-le-cadre-award#recipients">Best Paper Competition</a> at ISIF FUSION 2026</p></li>
+      <li class="news-item" data-k="lab"><time>Jul. 2026</time><span class="nk">Lab</span><p>F. Meyer visits the <a target="_blank" rel="noopener" href="https://www.cam.ac.uk/">University of Cambridge</a></p></li>
+      <li class="news-item" data-k="award"><time>Jun. 2026</time><span class="nk">Award</span><p>S. Wei's paper on neural-enhanced track-before-detect wins the <a target="_blank" rel="noopener" href="https://isif.org/awards/jean-pierre-le-cadre-award#recipients">Best Paper Competition</a> at ISIF FUSION 2026</p></li>
       <li class="news-item" data-k="paper"><time>May 2026</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://pubs.aip.org/asa/jasa/article/159/5/4736/3393046">range-dependent geoacoustic inversion</a></p></li>
-      <li class="news-item" data-k="paper"><time>Apr. 2026</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/11495048/">multipath-based SLAM for distributed MIMO systems</a></p></li>
-      <li class="news-item" data-k="lab"><time>Apr. 2026</time><span class="nk">Lab</span><p>PI Meyer is visiting the <a target="_blank" rel="noopener" href="https://gatech.edu/">Georgia Institute of Technology</a></p></li>
-      <li class="news-item" data-k="lab" hidden><time>Apr. 2026</time><span class="nk">Lab</span><p>Postdoc Xuhong Li joins Lund University as a faculty member</p></li>
-      <li class="news-item" data-k="lab" hidden><time>Mar. 2026</time><span class="nk">Lab</span><p>PI Meyer is visiting the <a target="_blank" rel="noopener" href="https://www.cmre.nato.int/">NATO Centre for Maritime Research and Experimentation</a></p></li>
-      <li class="news-item" data-k="lab" hidden><time>Feb. 2026</time><span class="nk">Lab</span><p>PI Meyer is visiting <a target="_blank" rel="noopener" href="https://www.whoi.edu/">Woods Hole Oceanographic Institution</a></p></li>
+      <li class="news-item" data-k="paper"><time>Apr. 2026</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11495048">multipath-based SLAM for distributed MIMO systems</a></p></li>
+      <li class="news-item" data-k="lab"><time>Apr. 2026</time><span class="nk">Lab</span><p>F. Meyer visits the <a target="_blank" rel="noopener" href="https://gatech.edu/">Georgia Institute of Technology</a></p></li>
+      <li class="news-item" data-k="lab" hidden><time>Apr. 2026</time><span class="nk">Lab</span><p>X. Li joins Lund University as a faculty member</p></li>
+      <li class="news-item" data-k="lab" hidden><time>Mar. 2026</time><span class="nk">Lab</span><p>F. Meyer and K. Nguyen visit the <a target="_blank" rel="noopener" href="https://www.cmre.nato.int/">NATO Centre for Maritime Research and Experimentation</a></p></li>
+      <li class="news-item" data-k="lab" hidden><time>Feb. 2026</time><span class="nk">Lab</span><p>F. Meyer and L. Watkins visit <a target="_blank" rel="noopener" href="https://www.whoi.edu/">Woods Hole Oceanographic Institution</a></p></li>
       <li class="news-item" data-k="paper" hidden><time>Jan. 2026</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11369785">association-based track-before-detect</a></p></li>
-      <li class="news-item" data-k="paper" hidden><time>Jan. 2026</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/11353058">Bayesian multiobject tracking with neural-enhanced motion and measurement models</a></p></li>
-      <li class="news-item" data-k="award" hidden><time>Dec. 2025</time><span class="nk">Award</span><p>Luisa Watkins's paper on passive acoustic tracking of sperm whales in 3-D with integrated ray tracing wins a Best Student Paper Award in Signal Processing in Acoustics at ASA 2025 (Fall meeting)</p></li>
+      <li class="news-item" data-k="paper" hidden><time>Jan. 2026</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11353058">Bayesian multiobject tracking with neural-enhanced motion and measurement models</a></p></li>
+      <li class="news-item" data-k="award" hidden><time>Dec. 2025</time><span class="nk">Award</span><p>L. Watkins's paper on passive acoustic tracking of sperm whales in 3-D with integrated ray tracing wins a Best Student Paper Award in Signal Processing in Acoustics at ASA 2025</p></li>
       <li class="news-item" data-k="paper" hidden><time>Oct. 2025</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://pubs.aip.org/asa/jasa/article-abstract/158/3/2448/3364499/Statistical-model-and-estimation-method-for">ranging a moving ship using a single acoustic receiver in shallow water</a></p></li>
-      <li class="news-item" data-k="paper" hidden><time>Sep. 2025</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/11129657">landmark-aided navigation approach using side-scan sonar</a></p></li>
-      <li class="news-item" data-k="lab" hidden><time>Aug. 2025</time><span class="nk">Lab</span><p><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?hl=en&amp;user=lr-LgboAAAAJ">Mingchao Liang</a> defends his PhD thesis entitled &ldquo;Scalable Inference in Probabilistic Graphical Models for Bayesian Machine Perception&rdquo;</p></li>
-      <li class="news-item" data-k="lab" hidden><time>Aug. 2025</time><span class="nk">Lab</span><p><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?hl=en&amp;user=8ZaOrZcAAAAJ">Wenyu Zhang</a> defends his PhD thesis entitled &ldquo;Localization and Tracking in Challenging Environments: Particle Flow and Active Planning&rdquo;</p></li>
-      <li class="news-item" data-k="lab" hidden><time>Jul. 2025</time><span class="nk">Lab</span><p><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?hl=en&amp;user=cXotcS8AAAAJ">Junsu Jang</a> defends his PhD thesis entitled &ldquo;Passive Acoustic Localization and Tracking in Marine Environments&rdquo;</p></li>
-      <li class="news-item" data-k="award" hidden><time>Jun. 2025</time><span class="nk">Award</span><p>Our work on neural enhanced multiobject tracking is leading the <a target="_blank" rel="noopener" href="https://nuscenes.org/tracking?externalData=all&amp;mapData=all&amp;modalities=Any">nuScenes tracking competition</a></p></li>
-      <li class="news-item" data-k="sea" hidden><time>Jun. 2025</time><span class="nk">At sea</span><p>At-sea experiment AR90 on the <a target="_blank" rel="noopener" href="https://www.whoi.edu/what-we-do/explore/ships/ships-neil-armstrong/">RV Neil Armstrong</a> (11 &ndash; 30 Jun. 2025)</p></li>
+      <li class="news-item" data-k="lab" hidden><time>Sep. 2025</time><span class="nk">Lab</span><p>J. Jang joins <a target="_blank" rel="noopener" href="https://www.whoi.edu/">Woods Hole Oceanographic Institution</a> as a postdoctoral researcher</p></li>
+      <li class="news-item" data-k="paper" hidden><time>Sep. 2025</time><span class="nk">Paper</span><p>New paper on a <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11129657">landmark-aided navigation approach using side-scan sonar</a></p></li>
+      <li class="news-item" data-k="lab" hidden><time>Aug. 2025</time><span class="nk">Lab</span><p>M. Liang defends his PhD thesis entitled <a target="_blank" rel="noopener" href="https://escholarship.org/uc/item/1qm5c7pb">&ldquo;Scalable Inference in Probabilistic Graphical Models for Bayesian Machine Perception&rdquo;</a></p></li>
+      <li class="news-item" data-k="lab" hidden><time>Aug. 2025</time><span class="nk">Lab</span><p>W. Zhang defends his PhD thesis entitled <a target="_blank" rel="noopener" href="https://escholarship.org/uc/item/3fs0d4z5">&ldquo;Localization and Tracking in Challenging Environments: Particle Flow and Active Planning&rdquo;</a></p></li>
+      <li class="news-item" data-k="lab" hidden><time>Jul. 2025</time><span class="nk">Lab</span><p>J. Jang defends his PhD thesis entitled <a target="_blank" rel="noopener" href="https://escholarship.org/uc/item/8v27f19g">&ldquo;Passive Acoustic Localization and Tracking in Marine Environments&rdquo;</a></p></li>
+      <li class="news-item" data-k="lab" hidden><time>Jun. 2025</time><span class="nk">Lab</span><p>Our work on neural-enhanced multiobject tracking leads the <a target="_blank" rel="noopener" href="https://nuscenes.org/tracking?externalData=all&amp;mapData=all&amp;modalities=Any">nuScenes tracking competition</a></p></li>
+      <li class="news-item" data-k="sea" hidden><time>Jun. 2025</time><span class="nk">At sea</span><p>At-sea experiment AR90 on the <a target="_blank" rel="noopener" href="https://www.whoi.edu/what-we-do/explore/ships/ships-neil-armstrong/">RV Neil Armstrong</a> (11&ndash;30 Jun. 2025)</p></li>
       <li class="news-item" data-k="paper" hidden><time>May 2025</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11003209">importance sampling with stochastic particle flow and diffusion optimization</a></p></li>
-      <li class="news-item" data-k="talk" hidden><time>May 2025</time><span class="nk">Talk</span><p>Mingchao Liang presented a webinar on <a target="_blank" rel="noopener" href="https://signalprocessingsociety.org/blog/sps-webinar-neural-enhanced-belief-propagation-multiobject-tracking">neural enhanced belief propagation for multiobject tracking</a></p></li>
+      <li class="news-item" data-k="talk" hidden><time>May 2025</time><span class="nk">Talk</span><p>M. Liang presents a webinar on <a target="_blank" rel="noopener" href="https://rc.signalprocessingsociety.org/education/webinars/sps_edu_web_liang_050725">neural enhanced belief propagation for multiobject tracking</a></p></li>
       <li class="news-item" data-k="paper" hidden><time>Apr. 2025</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://pubs.aip.org/asa/jasa/article-abstract/157/4/2819/3344175/Sequential-source-localization-in-shallow-water-by">sequential source localization in shallow water by single-receiver probabilistic focalization</a></p></li>
-      <li class="news-item" data-k="paper" hidden><time>Mar. 2025</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/10932864">direct multipath-based SLAM</a></p></li>
-      <li class="news-item" data-k="lab" hidden><time>Feb. 2025</time><span class="nk">Lab</span><p>PI Meyer is promoted to Associate Professor with tenure</p></li>
-      <li class="news-item" data-k="project" hidden><time>Oct. 2024</time><span class="nk">Project</span><p>New ONR DURIP project <a target="_blank" rel="noopener" href="https://today.ucsd.edu/story/uc-san-diego-receives-10-durip-awards-from-department-of-defense"><i>&ldquo;Sensing Capabilities for Autonomous MCM&rdquo;</i></a></p></li>
-      <li class="news-item" data-k="award" hidden><time>Jul. 2024</time><span class="nk">Award</span><p>Wenyu Zhang's paper on <a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/FUSION-24-Award.png">particle flows for source localization in 3-D</a> is the runner up at the Best Student Paper Competition at ISIF FUSION 2024</p></li>
-      <li class="news-item" data-k="service" hidden><time>Jul. 2024</time><span class="nk">Service</span><p>PI Meyer serves as Special Session Co-Chair at ISIF FUSION 2024</p></li>
-      <li class="news-item" data-k="lab" hidden><time>Jul. 2024</time><span class="nk">Lab</span><p>Postdoc Mohammad J. Khojasteh joins RIT as a faculty member</p></li>
-      <li class="news-item" data-k="paper" hidden><time>May 2024</time><span class="nk">Paper</span><p>Four accepted papers at ISIF FUSION 2024</p></li>
-      <li class="news-item" data-k="paper" hidden><time>Feb. 2024</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/10462619">multiobject tracking with embedded particle flow</a></p></li>
-      <li class="news-item" data-k="award" hidden><time>Jan. 2024</time><span class="nk">Award</span><p>Our work on neural enhanced belief propagation for multiobject tracking is leading the <a target="_blank" rel="noopener" href="https://nuscenes.org/tracking?externalData=all&amp;mapData=all&amp;modalities=Lidar">nuScenes tracking competition</a> for LiDAR measurements</p></li>
+      <li class="news-item" data-k="paper" hidden><time>Mar. 2025</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10932864">direct multipath-based SLAM</a></p></li>
+      <li class="news-item" data-k="lab" hidden><time>Feb. 2025</time><span class="nk">Lab</span><p>F. Meyer is promoted to Associate Professor with tenure</p></li>
+      <li class="news-item" data-k="project" hidden><time>Oct. 2024</time><span class="nk">Project</span><p><a target="_blank" rel="noopener" href="https://today.ucsd.edu/story/uc-san-diego-receives-10-durip-awards-from-department-of-defense">New ONR DURIP project on underwater navigation</a></p></li>
+      <li class="news-item" data-k="award" hidden><time>Jul. 2024</time><span class="nk">Award</span><p>W. Zhang's paper on <a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/FUSION-24-Award.png">particle flows for source localization in 3-D</a> is the runner-up at the Best Student Paper Competition at ISIF FUSION 2024</p></li>
+      <li class="news-item" data-k="lab" hidden><time>Jul. 2024</time><span class="nk">Lab</span><p>M. J. Khojasteh joins RIT as a faculty member</p></li>
+      <li class="news-item" data-k="paper" hidden><time>Feb. 2024</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10462619">multiobject tracking with embedded particle flow</a></p></li>
+      <li class="news-item" data-k="lab" hidden><time>Jan. 2024</time><span class="nk">Lab</span><p>Our work on neural enhanced belief propagation for multiobject tracking leads the <a target="_blank" rel="noopener" href="https://nuscenes.org/tracking?externalData=all&amp;mapData=all&amp;modalities=Lidar">nuScenes tracking competition</a> for LiDAR measurements</p></li>
       <li class="news-item" data-k="paper" hidden><time>Jan. 2024</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10258113">neural enhanced belief propagation for multiobject tracking</a></p></li>
-      <li class="news-item" data-k="project" hidden><time>Jan. 2024</time><span class="nk">Project</span><p>New ONR project <i>&ldquo;Learning-Aided Geoacoustic Inversion&rdquo;</i></p></li>
-      <li class="news-item" data-k="award" hidden><time>Dec. 2023</time><span class="nk">Award</span><p>Junsu Jang's paper on <a target="_blank" rel="noopener" href="https://pubs.aip.org/asa/jasa/article/154/4_supplement/A307/2924588">waveguide invariant navigation of an autonomous underwater vehicle</a> wins the Best Student Paper Award at ASA 2023</p></li>
+      <li class="news-item" data-k="project" hidden><time>Jan. 2024</time><span class="nk">Project</span><p>New ONR project on inverse problems in oceanography</p></li>
+      <li class="news-item" data-k="award" hidden><time>Dec. 2023</time><span class="nk">Award</span><p>J. Jang's paper on <a target="_blank" rel="noopener" href="https://pubs.aip.org/asa/jasa/article/154/4_supplement/A307/2924588">waveguide invariant navigation of an autonomous underwater vehicle</a> wins the Best Student Paper Award at ASA 2023</p></li>
       <li class="news-item" data-k="paper" hidden><time>Oct. 2023</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://pubs.aip.org/asa/jasa/article-abstract/154/4/2579/2918287/Automating-multi-target-tracking-of-singing">automating multi-target tracking of singing humpback whales using vector sensors</a></p></li>
       <li class="news-item" data-k="paper" hidden><time>Sep. 2023</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10242158">data fusion for multipath-based simultaneous localization and mapping</a></p></li>
-      <li class="news-item" data-k="service" hidden><time>Jul. 2023</time><span class="nk">Service</span><p>PI Meyer is appointed Associate Editor of the <a target="_blank" rel="noopener" href="https://signalprocessingsociety.org/publications-resources/ieee-transactions-signal-processing/editorial-board"><i>IEEE Transactions on Signal Processing</i></a></p></li>
-      <li class="news-item" data-k="service" hidden><time>Jun. 2023</time><span class="nk">Service</span><p>PI Meyer serves as Technical Co-Chair at <a target="_blank" rel="noopener" href="https://fusion2023.org/about-us">ISIF FUSION 2023</a></p></li>
-      <li class="news-item" data-k="talk" hidden><time>Jun. 2023</time><span class="nk">Talk</span><p>PI Meyer gives the tutorial <i>&ldquo;Bayesian Estimation with Learned Models: A Graphical-Model Perspective&rdquo;</i> at <a target="_blank" rel="noopener" href="https://fusion2023.org/tutorials">ISIF FUSION 2023</a></p></li>
-      <li class="news-item" data-k="award" hidden><time>May 2023</time><span class="nk">Award</span><p>Postdoc Thomas Kropfreiter is awarded a <a target="_blank" rel="noopener" href="https://www.fwf.ac.at/forschungsradar/10.55776/J4726"> 2023 FWF Erwin Schrödinger Fellowship</a></p></li>
+      <li class="news-item" data-k="service" hidden><time>Jul. 2023</time><span class="nk">Service</span><p>F. Meyer is appointed Associate Editor of the <a target="_blank" rel="noopener" href="https://signalprocessingsociety.org/publications-resources/ieee-transactions-signal-processing/editorial-board"><i>IEEE Transactions on Signal Processing</i></a></p></li>
+      <li class="news-item" data-k="talk" hidden><time>Jun. 2023</time><span class="nk">Talk</span><p>F. Meyer gives the tutorial <i>&ldquo;Bayesian Estimation with Learned Models: A Graphical-Model Perspective&rdquo;</i> at ISIF FUSION 2023</p></li>
+      <li class="news-item" data-k="award" hidden><time>May 2023</time><span class="nk">Award</span><p>T. Kropfreiter is awarded a <a target="_blank" rel="noopener" href="https://www.fwf.ac.at/forschungsradar/10.55776/J4726"> 2023 FWF Erwin Schrödinger Fellowship</a></p></li>
       <li class="news-item" data-k="paper" hidden><time>May 2023</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://pubs.aip.org/asa/jasa/article-abstract/153/5/2690/2887916/Bayesian-detection-and-tracking-of-odontocetes-in">whale tracking in 3-D from echolocation clicks</a></p></li>
-      <li class="news-item" data-k="project" hidden><time>Feb. 2023</time><span class="nk">Project</span><p>New ONR DURIP project <i>&ldquo;Autonomous Sensing for Ocean Acoustics&rdquo;</i></p></li>
-      <li class="news-item" data-k="award" hidden><time>Oct. 2022</time><span class="nk">Award</span><p>PI Meyer receives a <a target="_blank" rel="noopener" href="https://www.nre.navy.mil/media-center/news-releases/best-and-brightest-onrs-2023-young-investigators">2023 ONR Young Investigator Award</a></p></li>
-      <li class="news-item" data-k="sea" hidden><time>Sep. 2022</time><span class="nk">At sea</span><p>At-sea experiment SWMFEx22 on the <a target="_blank" rel="noopener" href="https://scripps.ucsd.edu/ships/sally-ride">RV Sally Ride</a> (15th &ndash; 22nd of Sept.)</p></li>
-      <li class="news-item" data-k="award" hidden><time>Aug. 2022</time><span class="nk">Award</span><p>PI Meyer receives a <a target="_blank" rel="noopener" href="https://www.darpa.mil/work-with-us/for-universities/young-faculty-award">2022 DARPA Young Faculty Award</a></p></li>
-      <li class="news-item" data-k="award" hidden><time>Aug. 2022</time><span class="nk">Award</span><p>Students Mingchao Liang and Wenyu Zhang are awarded a <a target="_blank" rel="noopener" href="https://www.qualcomm.com/research/university-relations/innovation-fellowship/2022-north-america">2022 Qualcomm Innovation Fellowship</a></p></li>
-      <li class="news-item" data-k="talk" hidden><time>Jul. 2022</time><span class="nk">Talk</span><p>PI Meyer gives the tutorial <i>&ldquo;Bayesian Estimation with Learned Models: A Graphical-Model Perspective&rdquo;</i> at ISIF FUSION 2022</p></li>
-      <li class="news-item" data-k="paper" hidden><time>Jun. 2022</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/9247273">real-time indoor localization in 3-D</a></p></li>
-      <li class="news-item" data-k="service" hidden><time>Apr. 2022</time><span class="nk">Service</span><p>PI Meyer and colleagues Domenico Gaglione, Erik Leitinger, and Jason Williams are organizing a special issue on <a target="_blank" rel="noopener" href="https://isif.org/publications/publications"><i>&ldquo;Graph-Based Localization and Tracking&rdquo;</i></a></p></li>
-      <li class="news-item" data-k="award" hidden><time>Jan. 2022</time><span class="nk">Award</span><p>PI Meyer receives a <a target="_blank" rel="noopener" href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2146261">2022 NSF CAREER Award</a></p></li>
+      <li class="news-item" data-k="project" hidden><time>Feb. 2023</time><span class="nk">Project</span><p>New ONR DURIP project on inverse problems in oceanography</p></li>
+      <li class="news-item" data-k="award" hidden><time>Oct. 2022</time><span class="nk">Award</span><p>F. Meyer receives a <a target="_blank" rel="noopener" href="https://www.onr.navy.mil/media-center/news-releases/best-and-brightest-onrs-2023-young-investigators">2023 ONR Young Investigator Award</a></p></li>
+      <li class="news-item" data-k="sea" hidden><time>Sep. 2022</time><span class="nk">At sea</span><p>At-sea experiment SWMFEx22 on the <a target="_blank" rel="noopener" href="https://scripps.ucsd.edu/ships/sally-ride">RV Sally Ride</a> (15&ndash;22 Sep. 2022)</p></li>
+      <li class="news-item" data-k="award" hidden><time>Aug. 2022</time><span class="nk">Award</span><p>F. Meyer receives a <a target="_blank" rel="noopener" href="https://www.darpa.mil/work-with-us/for-universities/young-faculty-award">2022 DARPA Young Faculty Award</a></p></li>
+      <li class="news-item" data-k="award" hidden><time>Aug. 2022</time><span class="nk">Award</span><p>M. Liang and W. Zhang are awarded a <a target="_blank" rel="noopener" href="https://www.qualcomm.com/research/university-relations/innovation-fellowship/2022-north-america">2022 Qualcomm Innovation Fellowship</a></p></li>
+      <li class="news-item" data-k="talk" hidden><time>Jul. 2022</time><span class="nk">Talk</span><p>F. Meyer gives the tutorial <i>&ldquo;Bayesian Estimation with Learned Models: A Graphical-Model Perspective&rdquo;</i> at ISIF FUSION 2022</p></li>
+      <li class="news-item" data-k="paper" hidden><time>Jun. 2022</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9247273">real-time indoor localization in 3-D</a></p></li>
+      <li class="news-item" data-k="award" hidden><time>Jan. 2022</time><span class="nk">Award</span><p>F. Meyer receives a <a target="_blank" rel="noopener" href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2146261">2022 NSF CAREER Award</a></p></li>
       <li class="news-item" data-k="paper" hidden><time>Dec. 2021</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9633194">graph-based maritime situational awareness</a></p></li>
-      <li class="news-item" data-k="award" hidden><time>Nov. 2021</time><span class="nk">Award</span><p>PI Meyer receives the <a target="_blank" rel="noopener" href="https://isif.org/isif-young-investigator-award">2021 ISIF Young Investigator Award</a></p></li>
+      <li class="news-item" data-k="award" hidden><time>Nov. 2021</time><span class="nk">Award</span><p>F. Meyer receives the <a target="_blank" rel="noopener" href="https://isif.org/awards/young-investigator-award">2021 ISIF Young Investigator Award</a></p></li>
       <li class="news-item" data-k="paper" hidden><time>Oct. 2021</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9585528">scalable extended object tracking</a> (<a target="_blank" rel="noopener" href="https://github.com/meyer-ucsd/EOT-TSP-21">code</a> and videos <a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/Scene-1.mp4">1</a>, <a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/Scene-2.mp4">2</a>, <a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/Scene-3.mp4">3</a>, <a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/Scene-4.mp4">4</a>)</p></li>
-      <li class="news-item" data-k="sea" hidden><time>Sep. 2021</time><span class="nk">At sea</span><p>At-sea experiment SWMFEx21 on the <a target="_blank" rel="noopener" href="https://scripps.ucsd.edu/ships/sally-ride">RV Sally Ride</a> (25th of Aug. &ndash; 6th of Sept.)</p></li>
-      <li class="news-item" data-k="paper" hidden><time>Aug. 2021</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://asa.scitation.org/doi/full/10.1121/10.0005814">probabilistic focalization for shallow water localization</a> (<a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/SWellEx96.mp4">video</a>)</p></li>
-      <li class="news-item" data-k="paper" hidden><time>Aug. 2021</time><span class="nk">Paper</span><p>Three accepted papers at the 24th International Conference on Information Fusion</p></li>
-      <li class="news-item" data-k="service" hidden><time>May 2021</time><span class="nk">Service</span><p>PI Meyer co-chairs the special session <i>&ldquo;Synergistic Radar Signal Processing and Tracking&rdquo;</i> at IEEE RADAR 2021</p></li>
-      <li class="news-item" data-k="project" hidden><time>Mar. 2021</time><span class="nk">Project</span><p>New ONR project <i>&ldquo;Machine Learning and Sparse Processing for Geoacoustic Inversions&rdquo;</i> (with Peter Gerstoft, UCSD-MPL)</p></li>
-      <li class="news-item" data-k="service" hidden><time>Jan. 2021</time><span class="nk">Service</span><p>PI Meyer is appointed Associate Editor of the <a target="_blank" rel="noopener" href="https://ieee-aess.org/publications/transactions-aes"><i>IEEE Transactions on Aerospace and Electronic Systems</i></a></p></li>
-      <li class="news-item" data-k="project" hidden><time>Oct. 2020</time><span class="nk">Project</span><p>New DDRE project <i>&ldquo;RF Network Sensing for Indoor Situational Awareness&rdquo;</i> (with Bryan Teague, MIT-LL)</p></li>
-      <li class="news-item" data-k="paper" hidden><time>Jul. 2020</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="http://ieeexplore.ieee.org/abstract/document/9098068">scalable data association for extended object tracking</a></p></li>
-      <li class="news-item" data-k="service" hidden><time>Jun. 2020</time><span class="nk">Service</span><p>PI Meyer co-chairs the workshop on advances for network localization and navigation at IEEE ICC 2020</p></li>
-      <li class="news-item" data-k="award" hidden><time>Jun. 2020</time><span class="nk">Award</span><p><a target="_blank" rel="noopener" href="https://www.cmre.nato.int/rockstories-blog-display/524-cmre-dkoe-sto-award">NATO STO Scientific Achievement Team Award</a> (effort led by P. Braca, A.-L. Jousselme, and L. M. Millefiori)</p></li>
-      <li class="news-item" data-k="talk" hidden><time>May 2020</time><span class="nk">Talk</span><p>PI Meyer gives the invited webinar <a target="_blank" rel="noopener" href="https://rc.signalprocessingsociety.org/education/webinars/SPSWEB20VID001.html/"><i>&ldquo;Distributed Localization and Tracking of Mobile Networks&rdquo;</i></a></p></li>
-      <li class="news-item" data-k="talk" hidden><time>Mar. 2020</time><span class="nk">Talk</span><p>PI Meyer gives the keynote <i>&ldquo;Bayesian Graph Signal Processing for Information Fusion and Multiobject Tracking&rdquo;</i> at IEEE Aerospace 2020</p></li>
-      <li class="news-item" data-k="service" hidden><time>Feb. 2020</time><span class="nk">Service</span><p>PI Meyer serves as Special Session Co-Chair at ITA 2020</p></li>
-      <li class="news-item" data-k="paper" hidden><time>Dec. 2019</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="http://ieeexplore.ieee.org/abstract/document/8823946">multipath-based indoor localization and mapping</a></p></li>
-      <li class="news-item" data-k="award" hidden><time>Nov. 2019</time><span class="nk">Award</span><p><a target="_blank" rel="noopener" href="https://digital-library.theiet.org/journals/premium-awards">IET Radar, Sonar &amp; Navigation Premium Award</a> for the paper <a target="_blank" rel="noopener" href="https://digital-library.theiet.org/content/journals/10.1049/iet-rsn.2017.0074/"><i>Ferri et al.: &ldquo;Cooperative robotic networks for underwater surveillance: an overview&rdquo;</i></a></p></li>
-      <li class="news-item" data-k="paper" hidden><time>Sep. 2019</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="http://ieeexplore.ieee.org/abstract/document/8801913">situational awareness in millimeter wave massive MIMO systems</a></p></li>
-      <li class="news-item" data-k="paper" hidden><time>Aug. 2019</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="http://ieeexplore.ieee.org/abstract/document/8714043">self-tuning algorithms for multisensor-multitarget tracking</a></p></li>
-      <li class="news-item" data-k="service" hidden><time>May 2019</time><span class="nk">Service</span><p>PI Meyer co-chairs the workshop on advances for network localization and navigation at IEEE ICC 2019</p></li>
-      <li class="news-item" data-k="service" hidden><time>Jan. 2019</time><span class="nk">Service</span><p>PI Meyer is appointed Associate Editor of the <a target="_blank" rel="noopener" href="http://isif.org/publications/jaif-editorial-board/">ISIF Journal of Advances in Information Fusion</a></p></li>
-      <li class="news-item" data-k="award" hidden><time>Nov. 2018</time><span class="nk">Award</span><p>Our work on <a target="_blank" rel="noopener" href="http://www.ll.mit.edu/news/new-indoor-navigation-system-works-where-gps-cant-reach">scalable and efficient indoor localization</a> wins a 2018 R&amp;D 100 Award</p></li>
-      <li class="news-item" data-k="paper" hidden><time>Sep. 2018</time><span class="nk">Paper</span><p>Paper on <a target="_blank" rel="noopener" href="http://ieeexplore.ieee.org/abstract/document/8454389">efficient multisensor localization</a> appeared in the <i>IEEE Signal Processing Magazine</i></p></li>
-      <li class="news-item" data-k="service" hidden><time>Jun. 2018</time><span class="nk">Service</span><p>PI Meyer serves as Special Session Co-Chair at IEEE SSP 2018</p></li>
-      <li class="news-item" data-k="service" hidden><time>May 2018</time><span class="nk">Service</span><p>PI Meyer co-chairs the workshop on advances for network localization and navigation at IEEE ICC 2018</p></li>
-      <li class="news-item" data-k="paper" hidden><time>Feb. 2018</time><span class="nk">Paper</span><p>Our work on <a target="_blank" rel="noopener" href="http://ieeexplore.ieee.org/abstract/document/8290605/">scalable multiobject tracking</a> was published in the <i>Proceedings of the IEEE</i></p></li>
+      <li class="news-item" data-k="sea" hidden><time>Sep. 2021</time><span class="nk">At sea</span><p>At-sea experiment SWMFEx21 on the <a target="_blank" rel="noopener" href="https://scripps.ucsd.edu/ships/sally-ride">RV Sally Ride</a> (25 Aug. &ndash; 6 Sep. 2021)</p></li>
+      <li class="news-item" data-k="paper" hidden><time>Aug. 2021</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://pubs.aip.org/jasa/article/150/2/1057/615488/Probabilistic-focalization-for-shallow-water">probabilistic focalization for shallow water localization</a> (<a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/SWellEx96.mp4">video</a>)</p></li>
+      <li class="news-item" data-k="project" hidden><time>Mar. 2021</time><span class="nk">Project</span><p>New ONR project on inverse problems in oceanography</p></li>
+      <li class="news-item" data-k="service" hidden><time>Jan. 2021</time><span class="nk">Service</span><p>F. Meyer is appointed Associate Editor of the <a target="_blank" rel="noopener" href="https://ieee-aess.org/publications/transactions-aes"><i>IEEE Transactions on Aerospace and Electronic Systems</i></a></p></li>
+      <li class="news-item" data-k="project" hidden><time>Oct. 2020</time><span class="nk">Project</span><p>New MIT-LL project on multipath-based SLAM</p></li>
+      <li class="news-item" data-k="paper" hidden><time>Jul. 2020</time><span class="nk">Paper</span><p>New paper on <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9098068">scalable data association for extended object tracking</a></p></li>
+      <li class="news-item" data-k="talk" hidden><time>May 2020</time><span class="nk">Talk</span><p>F. Meyer gives the invited webinar <a target="_blank" rel="noopener" href="https://rc.signalprocessingsociety.org/education/webinars/SPSWEB20VID001.html/"><i>&ldquo;Distributed Localization and Tracking of Mobile Networks&rdquo;</i></a></p></li>
+      <li class="news-item" data-k="talk" hidden><time>Mar. 2020</time><span class="nk">Talk</span><p>F. Meyer gives the keynote <i>&ldquo;Bayesian Graph Signal Processing for Information Fusion and Multiobject Tracking&rdquo;</i> at IEEE Aerospace 2020</p></li>
+      <li class="news-item" data-k="lab" hidden><time>Jan. 2020</time><span class="nk">Lab</span><p>F. Meyer joins UC San Diego and founds the Situational Awareness Laboratory</p></li>
     </ol>
-    <button class="news-more" type="button" aria-expanded="false" data-n="79">Show all 79 items ↓</button>
+    <button class="news-more" type="button" aria-expanded="false" data-n="61">Show all 61 items ↓</button>
   </div>
 </section>
 
@@ -1021,10 +1016,10 @@
       <div class="ph">[ photo ]<img src="photos/florian-meyer.jpg" alt="" onerror="this.remove()"></div>
       <div>
         <h3>Florian Meyer</h3>
-        <div class="role">Principal Investigator · Associate Professor, Scripps Institution of Oceanography &amp; ECE</div>
-        <p>Florian Meyer received his M.Sc. and Ph.D. degrees in electrical engineering from TU Wien in 2011 and 2015. Before joining UC San Diego, he was a Research Scientist at the NATO Centre for Maritime Research and Experimentation and a Postdoctoral Fellow and Associate at MIT's Laboratory for Information &amp; Decision Systems. He is an Associate Editor of the IEEE Transactions on Signal Processing.</p>
+        <div class="role">Principal Investigator · Associate Professor, Scripps Institution of Oceanography and Department of Electrical and Computer Engineering</div>
+        <p>Florian Meyer received his MS and PhD degrees in electrical engineering from TU Wien in 2011 and 2015. Before joining UC San Diego, he was a Research Scientist at the NATO Centre for Maritime Research and Experimentation and a Postdoctoral Fellow and Associate at MIT's Laboratory for Information &amp; Decision Systems. He is an Associate Editor of the IEEE Transactions on Signal Processing.</p>
         <div class="chips"><span>ONR Young Investigator Award 2023</span><span>DARPA Young Faculty Award 2022</span><span>NSF CAREER Award 2022</span><span>ISIF Young Investigator Award 2021</span><span>R&amp;D 100 Award 2018</span></div>
-        <div class="links"><a href="mailto:flmeyer@ucsd.edu">Email</a><a href="https://scholar.google.com/citations?user=XnMK9VcAAAAJ">Google Scholar</a><a href="https://github.com/meyer-ucsd">GitHub</a></div>
+        <div class="links"><a href="mailto:flmeyer@ucsd.edu">Email</a><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=XnMK9VcAAAAJ">Google Scholar</a><a target="_blank" rel="noopener" href="https://github.com/meyer-ucsd">GitHub</a></div>
       </div>
     </div>
 
@@ -1033,24 +1028,30 @@
       <button type="button" class="mate" data-person="luisa-watkins" aria-haspopup="dialog" aria-controls="profile"><span class="av">LW<img src="photos/luisa-watkins.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Luisa Watkins</b><small>PhD · Signal &amp; Image Processing</small><span class="more">Profile</span></button>
       <button type="button" class="mate" data-person="shaoxiu-wei" aria-haspopup="dialog" aria-controls="profile"><span class="av">SW<img src="photos/shaoxiu-wei.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Shaoxiu Wei</b><small>PhD · Signal &amp; Image Processing</small><span class="more">Profile</span></button>
       <button type="button" class="mate" data-person="clair-ma" aria-haspopup="dialog" aria-controls="profile"><span class="av">CM<img src="photos/clair-ma.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Clair Ma</b><small>PhD · Applied Ocean Sciences</small><span class="more">Profile</span></button>
-      <button type="button" class="mate" data-person="ryan-pai" aria-haspopup="dialog" aria-controls="profile"><span class="av">RP<img src="photos/ryan-pai.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Ryan Pai</b><small>PhD · Signal &amp; Image Processing</small><span class="more">Profile</span></button>
       <button type="button" class="mate" data-person="khoa-nguyen" aria-haspopup="dialog" aria-controls="profile"><span class="av">KN<img src="photos/khoa-nguyen.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Khoa Nguyen</b><small>PhD · Machine Learning &amp; Data Science</small><span class="more">Profile</span></button>
+      <button type="button" class="mate" data-person="ryan-pai" aria-haspopup="dialog" aria-controls="profile"><span class="av">RP<img src="photos/ryan-pai.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Ryan Pai</b><small>PhD · Signal &amp; Image Processing</small><span class="more">Profile</span></button>
       <button type="button" class="mate" data-person="avik-ghosh" aria-haspopup="dialog" aria-controls="profile"><span class="av">AG<img src="photos/avik-ghosh.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Avik Ghosh</b><small>MS · Signal &amp; Image Processing</small><span class="more">Profile</span></button>
       <button type="button" class="mate" data-person="mitchell-turton" aria-haspopup="dialog" aria-controls="profile"><span class="av">MT<img src="photos/mitchell-turton.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Mitchell Turton</b><small>Undergraduate Researcher</small><span class="more">Profile</span></button>
     </div>
 
-    <div class="sub">Alumni</div>
+    <div class="sub">Postdoc alumni</div>
     <div class="alum rise">
-      <div>Xuhong Li<small>Postdoc 2024–26 · Assistant Professor, Lund University</small></div>
-      <div>Jakob Möderl<small>Postdoc 2025 · Project Scientist, TU Graz</small></div>
-      <div>Mohammad J. Khojasteh<small>Postdoc 2023–24 · Assistant Professor, RIT</small></div>
-      <div>Thomas Kropfreiter<small>Postdoc 2022–24 · Project Scientist, TU Wien</small></div>
-      <div>Mingchao Liang<small>PhD 2025 · Meta</small></div>
-      <div>Wenyu Zhang<small>PhD 2025 · Huawei</small></div>
-      <div>Junsu Jang<small>PhD 2025 · WHOI</small></div>
-      <div>Ellen Davenport<small>MS 2023</small></div>
-      <div>Alexia Reyes<small>MS 2023</small></div>
-      <div>Mia Gonzalez<small>MS 2020</small></div>
+      <div><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=fv3gMOEAAAAJ">Xuhong Li</a><small>2024–26 · Assistant Professor, Lund University</small></div>
+      <div><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=aciPapYAAAAJ">Jakob Möderl</a><small>2025 · Project Scientist, TU Graz</small></div>
+      <div><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=x8LRtKUAAAAJ">Mohammad J. Khojasteh</a><small>2023–24 · Assistant Professor, RIT</small></div>
+      <div><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=jmRlp6MAAAAJ">Thomas Kropfreiter</a><small>2022–24 · Project Scientist, TU Wien</small></div>
+    </div>
+    <div class="sub next">PhD alumni</div>
+    <div class="alum rise">
+      <div><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=lr-LgboAAAAJ">Mingchao Liang</a><small>2025 · Meta</small></div>
+      <div><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=8ZaOrZcAAAAJ">Wenyu Zhang</a><small>2025 · Huawei</small></div>
+      <div><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=cXotcS8AAAAJ">Junsu Jang</a><small>2025 · WHOI</small></div>
+    </div>
+    <div class="sub next">MS alumni</div>
+    <div class="alum rise">
+      <div><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=lvqdagwAAAAJ">Ellen Davenport</a><small>2023</small></div>
+      <div>Alexia Reyes<small>2023</small></div>
+      <div>Mia Gonzalez<small>2020</small></div>
     </div>
   </div>
 </section>
@@ -1066,26 +1067,26 @@
       <button data-f="mot" data-c="mot"><i></i>Tracking</button>
       <button data-f="nav" data-c="nav"><i></i>Navigation</button>
       <button data-f="geo" data-c="geo"><i></i>Inverse Problems</button>
-      <button data-f="slam" data-c="slam"><i></i>MP-SLAM</button>
+      <button data-f="slam" data-c="slam"><i></i>SLAM</button>
     </div>
     <ul class="plist">
-      <li data-c="geo"><span class="dot"></span><div><div class="t">Range-dependent matched-field geoacoustic inversion using a tonal source towed on circular tracks</div><div class="a"><u>F. Meyer</u>, W. S. Hodgkiss, A. A. Saucan</div></div><span class="y"><em>JASA</em>2026</span></li>
-      <li data-c="slam"><span class="dot"></span><div><div class="t">Adaptive multipath-based SLAM for distributed MIMO systems</div><div class="a"><u>X. Li</u>, B. J. B. Deutschmann, E. Leitinger, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TWC</em>2026</span></li>
-      <li data-c="mot"><span class="dot"></span><div><div class="t">Association-based track-before-detect with object contribution probabilities</div><div class="a"><u>T. Kropfreiter</u>, J. L. Williams, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2026</span></li>
-      <li data-c="mot"><span class="dot"></span><div><div class="t">Bayesian multiobject tracking with neural-enhanced motion and measurement models</div><div class="a"><u>S. Wei</u>, <u>M. Liang</u>, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2026</span></li>
-      <li data-c="geo"><span class="dot"></span><div><div class="t">Single-hydrophone Bayesian matched-field geoacoustic inversion</div><div class="a">Y. Park, <u>T. Kropfreiter</u>, <u>F. Meyer</u>, P. Gerstoft</div></div><span class="y"><em>JASA-EL</em>2025</span></li>
-      <li data-c="nav"><span class="dot"></span><div><div class="t">Statistical model and estimation method for ranging a moving ship using a single acoustic receiver in shallow water</div><div class="a"><u>J. Jang</u>, W. S. Hodgkiss, <u>F. Meyer</u></div></div><span class="y"><em>JASA</em>2025</span></li>
-      <li data-c="geo"><span class="dot"></span><div><div class="t">Sequential source localization in shallow water by single-receiver probabilistic focalization</div><div class="a"><u>L. Watkins</u>, P. Stinco, A. Tesei, <u>F. Meyer</u></div></div><span class="y"><em>JASA</em>2025</span></li>
-      <li data-c="slam"><span class="dot"></span><div><div class="t">Direct multipath-based SLAM</div><div class="a"><u>M. Liang</u>, E. Leitinger, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2025</span></li>
-      <li data-c="nav"><span class="dot"></span><div><div class="t">A landmark-aided navigation approach using side-scan sonar</div><div class="a"><u>E. Davenport</u>, <u>K. Nguyen</u>, <u>J. Jang</u>, <u>C. Ma</u>, S. Fish, L. Lenain, <u>F. Meyer</u></div></div><span class="y"><em>IEEE JOE</em>2025</span></li>
-      <li data-c="mot"><span class="dot"></span><div><div class="t">Multisensor multiobject tracking with improved sampling efficiency</div><div class="a"><u>W. Zhang</u>, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2024</span></li>
-      <li data-c="mot"><span class="dot"></span><div><div class="t">Neural enhanced belief propagation for multiobject tracking</div><div class="a"><u>M. Liang</u>, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2024</span></li>
-      <li data-c="slam"><span class="dot"></span><div><div class="t">Data fusion for multipath-based SLAM: Combining information from multiple propagation paths</div><div class="a">E. Leitinger, A. Venus, B. Teague, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2023</span></li>
-      <li data-c="geo"><span class="dot"></span><div><div class="t">Probabilistic focalization for shallow water localization</div><div class="a"><u>F. Meyer</u>, K. L. Gemba</div></div><span class="y"><em>JASA</em>2021</span></li>
-      <li data-c="slam"><span class="dot"></span><div><div class="t">A belief propagation algorithm for multipath-based SLAM</div><div class="a">E. Leitinger, <u>F. Meyer</u>, F. Hlawatsch, K. Witrisal, F. Tufvesson, M. Z. Win</div></div><span class="y"><em>IEEE TWC</em>2019</span></li>
-      <li data-c="mot"><span class="dot"></span><div><div class="t">Message passing algorithms for scalable multitarget tracking</div><div class="a"><u>F. Meyer</u>, <u>T. Kropfreiter</u>, J. L. Williams, R. Lau, F. Hlawatsch, P. Braca, M. Z. Win</div></div><span class="y"><em>Proc. IEEE</em>2018</span></li>
+      <li data-c="geo"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://pubs.aip.org/jasa/article/159/5/4736/3393046/Range-dependent-matched-field-geoacoustic">Range-dependent matched-field geoacoustic inversion using a tonal source towed on circular tracks</a></div><div class="a"><u>F. Meyer</u>, W. S. Hodgkiss, A. A. Saucan</div></div><span class="y"><em>JASA</em>2026</span></li>
+      <li data-c="slam"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11495048">Adaptive multipath-based SLAM for distributed MIMO systems</a></div><div class="a"><u>X. Li</u>, B. J. B. Deutschmann, E. Leitinger, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TWC</em>2026</span></li>
+      <li data-c="mot"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11369785">Association-based track-before-detect with object contribution probabilities</a></div><div class="a"><u>T. Kropfreiter</u>, J. L. Williams, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2026</span></li>
+      <li data-c="mot"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11353058">Bayesian multiobject tracking with neural-enhanced motion and measurement models</a></div><div class="a"><u>S. Wei</u>, <u>M. Liang</u>, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2026</span></li>
+      <li data-c="geo"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://pubs.aip.org/jel/article/5/10/108601/3365760/Single-hydrophone-Bayesian-matched-field">Single-hydrophone Bayesian matched-field geoacoustic inversion</a></div><div class="a">Y. Park, <u>T. Kropfreiter</u>, <u>F. Meyer</u>, P. Gerstoft</div></div><span class="y"><em>JASA-EL</em>2025</span></li>
+      <li data-c="nav"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://pubs.aip.org/jasa/article/158/3/2448/3364499/Statistical-model-and-estimation-method-for">Statistical model and estimation method for ranging a moving ship using a single acoustic receiver in shallow water</a></div><div class="a"><u>J. Jang</u>, W. S. Hodgkiss, <u>F. Meyer</u></div></div><span class="y"><em>JASA</em>2025</span></li>
+      <li data-c="geo"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://pubs.aip.org/jasa/article/157/4/2819/3344175/Sequential-source-localization-in-shallow-water-by">Sequential source localization in shallow water by single-receiver probabilistic focalization</a></div><div class="a"><u>L. Watkins</u>, P. Stinco, A. Tesei, <u>F. Meyer</u></div></div><span class="y"><em>JASA</em>2025</span></li>
+      <li data-c="slam"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10932864">Direct multipath-based SLAM</a></div><div class="a"><u>M. Liang</u>, E. Leitinger, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2025</span></li>
+      <li data-c="nav"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/11129657">A landmark-aided navigation approach using side-scan sonar</a></div><div class="a"><u>E. Davenport</u>, <u>K. Nguyen</u>, <u>J. Jang</u>, <u>C. Ma</u>, S. Fish, L. Lenain, <u>F. Meyer</u></div></div><span class="y"><em>IEEE JOE</em>2025</span></li>
+      <li data-c="mot"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10462619">Multisensor multiobject tracking with improved sampling efficiency</a></div><div class="a"><u>W. Zhang</u>, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2024</span></li>
+      <li data-c="mot"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10258113">Neural enhanced belief propagation for multiobject tracking</a></div><div class="a"><u>M. Liang</u>, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2024</span></li>
+      <li data-c="slam"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10242158">Data fusion for multipath-based SLAM: Combining information from multiple propagation paths</a></div><div class="a">E. Leitinger, A. Venus, B. Teague, <u>F. Meyer</u></div></div><span class="y"><em>IEEE TSP</em>2023</span></li>
+      <li data-c="geo"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://pubs.aip.org/jasa/article/150/2/1057/615488/Probabilistic-focalization-for-shallow-water">Probabilistic focalization for shallow water localization</a></div><div class="a"><u>F. Meyer</u>, K. L. Gemba</div></div><span class="y"><em>JASA</em>2021</span></li>
+      <li data-c="slam"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/8823946">A belief propagation algorithm for multipath-based SLAM</a></div><div class="a">E. Leitinger, <u>F. Meyer</u>, F. Hlawatsch, K. Witrisal, F. Tufvesson, M. Z. Win</div></div><span class="y"><em>IEEE TWC</em>2019</span></li>
+      <li data-c="mot"><span class="dot"></span><div><div class="t"><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/8290605">Message passing algorithms for scalable multitarget tracking</a></div><div class="a"><u>F. Meyer</u>, <u>T. Kropfreiter</u>, J. L. Williams, R. Lau, F. Hlawatsch, P. Braca, M. Z. Win</div></div><span class="y"><em>Proc. IEEE</em>2018</span></li>
     </ul>
-    <p class="more">The complete list is on <a href="https://scholar.google.com/citations?user=XnMK9VcAAAAJ">Google Scholar</a>. Code is available on <a href="https://github.com/meyer-ucsd">GitHub</a>.</p>
+    <p class="more">The complete list is on <a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=XnMK9VcAAAAJ">Google Scholar</a>. Code is available on <a target="_blank" rel="noopener" href="https://github.com/meyer-ucsd">GitHub</a>.</p>
   </div>
 </section>
 
@@ -1093,23 +1094,24 @@
   <div class="wrap">
     <div class="rise">
       <div class="depth-tag">3600 m · TEACHING &amp; TUTORIALS</div>
-      <h2><b>Teaching</b> &amp; tutorials</h2>
-      <p class="lead">Courses in digital signal processing, estimation, and probabilistic inference for students in Electrical &amp; Computer Engineering and at Scripps Institution of Oceanography. Tutorial slides and reference code from our conference tutorials are free to use.</p>
+      <h2>Teaching &amp; <b>tutorials</b></h2>
+      <p class="lead">Courses in digital signal processing, estimation, and probabilistic inference for students in Electrical and Computer Engineering and at Scripps Institution of Oceanography. Tutorial slides and reference code from our conference tutorials are free to use.</p>
     </div>
+    <div class="sub">Teaching</div>
     <div class="courses rise">
-      <div class="course"><div class="top"><span class="code">ECE 161A</span><span class="lvl ug">Undergraduate</span></div><h3>Introduction to Digital Signal Processing</h3><span class="terms">Fall 2024 · Fall 2025</span><a href="https://fmeyer.ucsd.edu/ECE-161A-Syllabus-2025.pdf">Syllabus →</a></div>
-      <div class="course"><div class="top"><span class="code">SIO 207A</span><span class="lvl">Graduate</span></div><h3>Fundamentals of Digital Signal Processing</h3><span class="terms">Fall 2020 · 2021 · 2022 · 2024 · 2025</span><a href="https://fmeyer.ucsd.edu/SIO-207A-Syllabus-2025.pdf">Syllabus →</a></div>
-      <div class="course"><div class="top"><span class="code">ECE 251A / SIO 207B</span><span class="lvl">Graduate</span></div><h3>Digital Signal Processing I</h3><span class="terms">Winter 2025</span><a href="https://fmeyer.ucsd.edu/ECE-251A-SIO-207B-Syllabus-2025.pdf">Syllabus →</a></div>
-      <div class="course"><div class="top"><span class="code">ECE 275A</span><span class="lvl">Graduate</span></div><h3>Parameter Estimation I</h3><span class="terms">Fall 2020 · 2021 · 2022 · 2023 · Spring 2025</span><a href="https://fmeyer.ucsd.edu/ECE-275A-Syllabus-2025.pdf">Syllabus →</a></div>
-      <div class="course"><div class="top"><span class="code">SIO 209 / SIO 298</span><span class="lvl">Graduate</span></div><h3>Signal Processing for Ocean Sciences</h3><span class="terms">Winter 2023 · Fall 2023 · Winter 2025</span><a href="https://fmeyer.ucsd.edu/SIO-289-Syllabus-2025.pdf">Syllabus →</a></div>
-      <div class="course"><div class="top"><span class="code">ECE 175B</span><span class="lvl ug">Undergraduate</span></div><h3>Probabilistic Reasoning and Graphical Models</h3><span class="terms">Spring 2022</span><a href="https://fmeyer.ucsd.edu/ECE-175B-Syllabus-2022.pdf">Syllabus →</a></div>
-      <div class="course"><div class="top"><span class="code">ECE 286</span><span class="lvl">Graduate</span></div><h3>Bayesian Machine Perception</h3><span class="terms">Spring 2020</span><a href="https://fmeyer.ucsd.edu/ECE-286-Syllabus-2020.pdf">Syllabus →</a></div>
+      <div class="course"><div class="top"><span class="code">ECE 161A</span><span class="lvl ug">Undergraduate</span></div><h3>Introduction to Digital Signal Processing</h3><span class="terms">Fall 2024 · 2025</span><span class="ta">TA: Luisa Watkins</span><a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/ECE-161A-Syllabus-2025.pdf">Syllabus →</a></div>
+      <div class="course"><div class="top"><span class="code">SIO 207A</span><span class="lvl">Graduate</span></div><h3>Fundamentals of Digital Signal Processing</h3><span class="terms">Fall 2020 · 2021 · 2022 · 2024 · 2025</span><a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/SIO-207A-Syllabus-2025.pdf">Syllabus →</a></div>
+      <div class="course"><div class="top"><span class="code">ECE 251A / SIO 207B</span><span class="lvl">Graduate</span></div><h3>Digital Signal Processing I</h3><span class="terms">Winter 2025</span><span class="ta">TA: Mingchao Liang</span><a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/ECE-251A-SIO-207B-Syllabus-2025.pdf">Syllabus →</a></div>
+      <div class="course"><div class="top"><span class="code">ECE 275A</span><span class="lvl">Graduate</span></div><h3>Parameter Estimation I</h3><span class="terms">Fall 2020 · 2021 · 2022 · 2023 · Spring 2025</span><span class="ta">TAs: Mingchao Liang, Shaoxiu Wei</span><a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/ECE-275A-Syllabus-2025.pdf">Syllabus →</a></div>
+      <div class="course"><div class="top"><span class="code">SIO 209 / SIO 298</span><span class="lvl">Graduate</span></div><h3>Signal Processing for Ocean Sciences</h3><span class="terms">Winter 2023 · Fall 2023 · Winter 2025</span><a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/SIO-289-Syllabus-2025.pdf">Syllabus →</a></div>
+      <div class="course"><div class="top"><span class="code">ECE 175B</span><span class="lvl ug">Undergraduate</span></div><h3>Probabilistic Reasoning and Graphical Models</h3><span class="terms">Spring 2022</span><a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/ECE-175B-Syllabus-2022.pdf">Syllabus →</a></div>
+      <div class="course"><div class="top"><span class="code">ECE 286</span><span class="lvl">Graduate</span></div><h3>Bayesian Machine Perception</h3><span class="terms">Spring 2020</span><a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/ECE-286-Syllabus-2020.pdf">Syllabus →</a></div>
     </div>
     <div class="sub">Tutorials</div>
     <div class="tuts rise">
-      <div class="tut"><span class="kind">Slides · Code</span><h3>Graph-Based Multiobject Tracking</h3><p>An introduction to multiobject tracking with factor graphs and belief propagation, with a reference implementation of the algorithm from our <i>Proc. IEEE</i> paper.</p><div class="tl"><a href="https://fmeyer.ucsd.edu/Meyer-Tutorial-2.pdf">Slides (PDF) →</a><a href="https://github.com/meyer-ucsd/MTT-PIEEE-18">Reference implementation →</a></div></div>
-      <div class="tut"><span class="kind">Slides</span><h3>Distributed Localization and Tracking of Mobile Networks</h3><p>Cooperative self-localization and distributed tracking in networks of mobile agents using message passing.</p><div class="tl"><a href="https://fmeyer.ucsd.edu/Meyer-Tutorial-1.pdf">Slides (PDF) →</a></div></div>
-      <div class="tut"><span class="kind">Conference tutorial</span><h3>Bayesian Estimation with Learned Models: A Graphical-Model Perspective</h3><p>Combining physics-based models with neural networks in factor graphs for interpretable, uncertainty-aware localization, tracking, and mapping.</p><p>A recurring ISIF FUSION tutorial since 2022, most&nbsp;recently&nbsp;in&nbsp;2026.</p><div class="tl"><a href="https://www.ntnu.edu/fusion2026/tutorials">FUSION 2026 →</a></div></div>
+      <div class="tut"><span class="kind">Slides · Code</span><h3>Graph-Based Multiobject Tracking</h3><p>An introduction to multiobject tracking with factor graphs and belief propagation, with a reference implementation of the algorithm from our <i>Proc. IEEE</i> paper.</p><div class="tl"><a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/Meyer-Tutorial-2.pdf">Slides (PDF) →</a><a target="_blank" rel="noopener" href="https://github.com/meyer-ucsd/MTT-PIEEE-18">Reference implementation →</a></div></div>
+      <div class="tut"><span class="kind">Slides</span><h3>Distributed Localization and Tracking of Mobile Networks</h3><p>Cooperative self-localization and distributed tracking in networks of mobile agents using message passing.</p><div class="tl"><a target="_blank" rel="noopener" href="https://fmeyer.ucsd.edu/Meyer-Tutorial-1.pdf">Slides (PDF) →</a></div></div>
+      <div class="tut"><span class="kind">Conference tutorial</span><h3>Bayesian Estimation with Learned Models: A Graphical-Model Perspective</h3><p>Combining physics-based models with neural networks in factor graphs for interpretable, uncertainty-aware localization, tracking, and mapping.</p><p>A recurring ISIF FUSION tutorial since 2022, most&nbsp;recently&nbsp;in&nbsp;2026.</p><div class="tl"><a target="_blank" rel="noopener" href="https://www.ntnu.edu/fusion2026/tutorials">FUSION 2026 →</a></div></div>
     </div>
   </div>
 </section>
@@ -1118,7 +1120,6 @@
   <div class="wrap rise">
     <div class="depth-tag">3800 m · SPONSORS</div>
     <h2>Our <b>sponsors</b></h2>
-    <p class="lead">We gratefully acknowledge the agencies and organizations that support our research.</p>
     <ul class="sponsors">
       <li style="--h:55px;--w:120.5"><a href="https://www.onr.navy.mil/" target="_blank" rel="noopener"><img src="logos/onr.png" alt="Office of Naval Research (ONR)"></a></li>
       <li style="--h:70px;--w:70"><a href="https://www.nsf.gov/" target="_blank" rel="noopener"><img src="logos/nsf.svg" alt="U.S. National Science Foundation (NSF)"></a></li>
@@ -1133,10 +1134,10 @@
   <div class="wrap rise">
     <div class="depth-tag">4000 m · JOIN</div>
     <h2>Explore the <b>unknown</b> with us</h2>
-    <p class="lead">We are looking for curious PhD students and postdocs with backgrounds in statistical signal processing, estimation theory, machine learning, robotics, or ocean acoustics. Prospective PhD students should apply through the ECE or Scripps graduate programs.</p>
+    <p class="lead">We are looking for curious PhD students and postdocs with backgrounds in statistical signal processing, estimation theory, machine learning, robotics, or ocean acoustics. Prospective PhD students should apply through the Electrical and Computer Engineering or Scripps graduate programs.</p>
     <div class="row">
       <a class="pill solid" href="mailto:flmeyer@ucsd.edu">flmeyer@ucsd.edu</a>
-      <a class="pill" href="https://scholar.google.com/citations?user=XnMK9VcAAAAJ">Google Scholar</a>
+      <a target="_blank" rel="noopener" class="pill" href="https://scholar.google.com/citations?user=XnMK9VcAAAAJ">Google Scholar</a>
     </div>
     <div class="addr">Situational Awareness Laboratory · Scripps Institution of Oceanography<br>University of California San Diego · 9500 Gilman Drive, La Jolla, CA 92093</div>
   </div>
@@ -1146,7 +1147,7 @@
   </svg>
 </section>
 
-<footer><div class="wrap"><span>© 2026 Situational Awareness Laboratory · UC San Diego</span><span>Scripps Institution of Oceanography · Electrical &amp; Computer Engineering</span></div></footer>
+<footer><div class="wrap"><a class="ucsd" href="https://ucsd.edu/" target="_blank" rel="noopener"><img src="logos/ucsd-white.svg" alt="UC San Diego" width="168" height="32"></a><span>© 2026 Situational Awareness Laboratory · UC San Diego</span><span>Scripps Institution of Oceanography · Department of Electrical and Computer Engineering</span></div></footer>
 
 <div class="scrim" id="profile-scrim" hidden></div>
 <aside class="drawer" id="profile" role="dialog" aria-modal="true" aria-labelledby="pf-name" hidden>
@@ -1163,7 +1164,10 @@
   function build() {
     const dpr = Math.min(devicePixelRatio || 1, 2);
     W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    surf = H * 0.16; bot = H * 0.92; sx = W < 800 ? W * 0.06 : W * 0.6; sy = H * 0.5;
+    // the surface sits just above the affiliation line, so it never crosses that text whatever the window height
+    const tag = document.querySelector('.hero .tagline');
+    surf = tag ? Math.max(70, tag.getBoundingClientRect().top - cv.getBoundingClientRect().top - 16) : H * 0.16;
+    bot = H * 0.92; sx = W < 800 ? W * 0.06 : W * 0.6; sy = H * 0.5;
     const axis = H * 0.52, k = 0.000012;
     rays = [];
     for (let a = -1; a <= 1.0001; a += 0.1) {
@@ -1178,7 +1182,9 @@
       rays.push({ pts, steep: Math.abs(a) > 0.55 });
     }
   }
-  build(); addEventListener('resize', build);
+  const rebuild = () => { build(); if (reduce) requestAnimationFrame(draw); };   // with reduced motion, redraw the still frame
+  build(); addEventListener('resize', rebuild); addEventListener('load', rebuild);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);     // web fonts shift the text a little
 
   let t0 = performance.now();
   function draw(now) {
@@ -1264,7 +1270,7 @@ document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click
 
 /* ---------- student profiles (side panel) ---------- */
 /* Profile details per student, keyed by the card's data-person. Name, photo, degree and program come from the card itself;
-   highlights come from News items that mention the full name, and papers from the Publications list (by highlighted author name).
+   highlights come from News items that mention the student (as "L. Watkins" or by full name), and papers from the Publications list (by highlighted author name).
    Format: bio: 'One or two sentences.'   interests: ['Topic', ...]
            education: [{ degree: 'M.S. in Electrical Engineering', year: '2022', school: 'UC San Diego' }, ...]
            links: { email: 'name@ucsd.edu', scholar: 'https://...', github: 'https://...', linkedin: 'https://...', web: 'https://...' }
@@ -1319,7 +1325,9 @@ const PEOPLE = {
       body.append(section('Education', ul));
     } else if (SHOW_TODO) body.append(section('Education', el('p', 'pf-todo', 'Degrees to be added.')));
     // highlights: news items that mention the student by name
-    const news = [...document.querySelectorAll('.news .news-item')].filter(li => li.querySelector('p').textContent.includes(name));
+    // the News writes names with initials ("L. Watkins"); match that form as a whole name, or the full name
+    const who = new RegExp('(^|[^A-Za-z.])' + author.replace(/[.]/g, '\\.') + '(?![A-Za-z])');
+    const news = [...document.querySelectorAll('.news .news-item')].filter(li => { const t = li.querySelector('p').textContent; return t.includes(name) || who.test(t); });
     if (news.length) {
       const ul = el('ul', 'pf-list');
       news.forEach(n => { const li = el('li'); li.append(el('time', null, n.querySelector('time').textContent)); const p = el('span'); p.innerHTML = n.querySelector('p').innerHTML; li.append(p); ul.append(li); });
@@ -1332,7 +1340,9 @@ const PEOPLE = {
       pubs.forEach(p => {
         const li = el('li'), venue = p.querySelector('.y em'), year = p.querySelector('.y').lastChild.textContent.trim();
         const who = el('small'); who.innerHTML = p.querySelector('.a').innerHTML;
-        li.append(el('b', null, p.querySelector('.t').textContent), who, el('small', null, (venue ? venue.textContent + ' ' : '') + year));
+        const title = el('b'), src = p.querySelector('.t a');
+        if (src) { const a = el('a', null, src.textContent); a.href = src.href; a.target = '_blank'; a.rel = 'noopener'; title.append(a); } else title.textContent = p.querySelector('.t').textContent;
+        li.append(title, who, el('small', null, (venue ? venue.textContent + ' ' : '') + year));
         ul.append(li);
       });
       body.append(section('Papers', ul));
