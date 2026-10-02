@@ -1160,10 +1160,10 @@
 (() => {
   const cv = document.getElementById('guide'), ctx = cv.getContext('2d');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W, H, rays = [], surf, bot, sx, sy;
+  let W = 0, H = 0, dpr = 1, rays = [], surf, bot, sx, sy;
   function build() {
-    const dpr = Math.min(devicePixelRatio || 1, 2);
-    W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
     // the surface sits just above the affiliation line, so it never crosses that text whatever the window height
     const tag = document.querySelector('.hero .tagline');
     surf = tag ? Math.max(70, tag.getBoundingClientRect().top - cv.getBoundingClientRect().top - 16) : H * 0.16;
@@ -1182,12 +1182,24 @@
       rays.push({ pts, steep: Math.abs(a) > 0.55 });
     }
   }
+  // The drawing must not rely on a one-time setup. Chrome can discard a canvas (e.g. in a background tab) and bring it back
+  // reset, which loses the scale and shrinks the scene into a corner; and the hero can change size or pixel ratio without a
+  // window resize (web fonts, zoom, another screen, a page that was laid out while hidden). So: is the setup still valid?
+  const stale = () => cv.clientWidth !== W || cv.clientHeight !== H || Math.min(devicePixelRatio || 1, 2) !== dpr
+    || cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr);
   const rebuild = () => { build(); if (reduce) requestAnimationFrame(draw); };   // with reduced motion, redraw the still frame
-  build(); addEventListener('resize', rebuild); addEventListener('load', rebuild);
+  build(); addEventListener('resize', rebuild); addEventListener('load', rebuild); addEventListener('pageshow', rebuild);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) rebuild(); });
+  cv.addEventListener('contextrestored', rebuild);
+  if (window.ResizeObserver) new ResizeObserver(() => { if (stale()) rebuild(); }).observe(cv);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);     // web fonts shift the text a little
 
   let t0 = performance.now();
   function draw(now) {
+    if (!reduce) requestAnimationFrame(draw);    // queue the next frame first, so a failed frame cannot stop the animation
+    if (stale()) build();
+    if (!W || !H) return;                         // no size yet (hidden or pre-rendered page); try again next frame
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);       // set the scale every frame: a restored context comes back unscaled
     const t = (now - t0) / 1000;
     ctx.clearRect(0, 0, W, H);
     // surface
@@ -1220,12 +1232,11 @@
     }
     ctx.fillStyle = '#7ff0e0'; ctx.beginPath(); ctx.arc(sx, sy, 4, 0, Math.PI * 2); ctx.fill();
     // receiver array
-    if (W < 800) { if (!reduce) requestAnimationFrame(draw); return; }
+    if (W < 800) return;
     const rx = W - 110;
     ctx.strokeStyle = 'rgba(230,241,245,.35)'; ctx.beginPath(); ctx.moveTo(rx, sy - 90); ctx.lineTo(rx, sy + 90); ctx.stroke();
     ctx.fillStyle = 'rgba(230,241,245,.7)';
     for (let i = -4; i <= 4; i++) { ctx.beginPath(); ctx.arc(rx, sy + i * 20, 2, 0, Math.PI * 2); ctx.fill(); }
-    if (!reduce) requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
 })();
@@ -1271,15 +1282,27 @@ document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click
 /* ---------- student profiles (side panel) ---------- */
 /* Profile details per student, keyed by the card's data-person. Name, photo, degree and program come from the card itself;
    highlights come from News items that mention the student (as "L. Watkins" or by full name), and papers from the Publications list (by highlighted author name).
-   Format: bio: 'One or two sentences.'   interests: ['Topic', ...]
-           education: [{ degree: 'M.S. in Electrical Engineering', year: '2022', school: 'UC San Diego' }, ...]
+   Format: title: 'PhD Candidate' (optional; replaces "PhD Student" / "MS Student" in the panel)
+           bio: 'One or two sentences.'   interests: ['Topic', ...] (shown as chips) or 'A sentence or two.' (shown as text)
+           education: [{ degree: 'MS in Electrical Engineering', year: '2022', school: 'UC San Diego' }, ...]
            links: { email: 'name@ucsd.edu', scholar: 'https://...', github: 'https://...', linkedin: 'https://...', web: 'https://...' }
    Empty fields are hidden; while SHOW_TODO is true they show as dashed placeholders instead (set it to false before going live). */
 const SHOW_TODO = true;
 const PEOPLE = {
   'clair-ma':      { bio: '', interests: [], education: [], links: {} },
   'shaoxiu-wei':   { bio: '', interests: [], education: [], links: {} },
-  'luisa-watkins': { bio: '', interests: [], education: [], links: { scholar: 'https://scholar.google.com/citations?user=SmLcvXQAAAAJ' } },
+  'luisa-watkins': {
+    title: 'PhD Candidate',
+    bio: 'Luisa Watkins is a 5th-year PhD Candidate in Signal & Image Processing in the Electrical and Computer Engineering Department at UC San Diego. The goal of her PhD work is to research and apply signal processing techniques to underwater acoustics problems. To complement her research studies, she is also pursuing an MS in Oceanography at the Scripps Institution of Oceanography, also at UC San Diego.',
+    interests: 'Her research interests include signal processing, algorithmic development, and ocean acoustics. She enjoys studying probabilistic graphical models and Bayesian estimation with the hope of developing better algorithms for complex environment characterization problems, specifically in the ocean. Whether doing underwater source localization or geoacoustic inversion, her goal is to continue exploring the field of signal processing and underwater acoustics.',
+    education: [
+      { degree: 'CPhil in Electrical Engineering (Signal & Image Processing)', year: '2026', school: 'UC San Diego' },
+      { degree: 'MS in Electrical Engineering (Signal & Image Processing)', year: '2024', school: 'UC San Diego' },
+      { degree: 'BS in Computer Engineering', year: '2022', school: 'Boston University' },
+      { degree: 'BA in Mathematics', year: '2022', school: 'Boston University' },
+    ],
+    links: { scholar: 'https://scholar.google.com/citations?user=SmLcvXQAAAAJ' },
+  },
   'khoa-nguyen':   { bio: '', interests: [], education: [], links: {} },
   'ryan-pai':      { bio: '', interests: [], education: [], links: {} },
   'avik-ghosh':    { bio: '', interests: [], education: [], links: {} },
@@ -1304,7 +1327,8 @@ const PEOPLE = {
     const cardImg = card.querySelector('.av img');
     if (cardImg) { const img = el('img'); img.alt = ''; img.src = cardImg.getAttribute('src'); img.onerror = () => img.remove(); av.append(img); }
     const h = el('h3', 'pf-name', name); h.id = 'pf-name';
-    const role = card.querySelector('small').textContent.trim().replace(/^(PhD|MS) · /, '$1 student · ');
+    const parts = card.querySelector('small').textContent.trim().split(' · ');   // e.g. ["PhD", "Signal & Image Processing"]
+    const role = [d.title || (/^(PhD|MS)$/.test(parts[0]) ? parts[0] + ' Student' : parts[0]), ...parts.slice(1)].join(' · ');
     body.append(av, h, el('div', 'pf-role', role), el('div', 'pf-aff', 'Situational Awareness Laboratory · UC San Diego'));
     const links = el('div', 'pf-links');
     for (const [k, label] of LINKS) {
@@ -1317,7 +1341,8 @@ const PEOPLE = {
     // about, interests, education
     if (d.bio) body.append(section('About', el('p', null, d.bio)));
     else if (SHOW_TODO) body.append(section('About', el('p', 'pf-todo', 'Short bio to be added.')));
-    if (d.interests && d.interests.length) { const c = el('div', 'chips'); d.interests.forEach(t => c.append(el('span', null, t))); body.append(section('Interests', c)); }
+    if (typeof d.interests === 'string' && d.interests) body.append(section('Interests', el('p', null, d.interests)));
+    else if (d.interests && d.interests.length) { const c = el('div', 'chips'); d.interests.forEach(t => c.append(el('span', null, t))); body.append(section('Interests', c)); }
     else if (SHOW_TODO) body.append(section('Interests', el('p', 'pf-todo', 'Research interests to be added.')));
     if (d.education && d.education.length) {
       const ul = el('ul', 'pf-list');
