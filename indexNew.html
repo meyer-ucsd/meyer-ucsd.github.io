@@ -1053,6 +1053,17 @@
       <div>Alexia Reyes<small>2023</small></div>
       <div>Mia Gonzalez<small>2020</small></div>
     </div>
+    <div class="sub next">Intern alumni</div>
+    <div class="alum rise">
+      <div>Emily Barr<small>2024</small></div>
+      <div>Aaron Wu<small>2023</small></div>
+      <div>Jesus Gomez<small>2022</small></div>
+      <div>Sara Morán<small>2022 · ENLACE</small></div>
+      <div>Ana Terminel<small>2022 · ENLACE</small></div>
+      <div>Minh Pham<small>2022</small></div>
+      <div>Matthew Morozov<small>2021</small></div>
+      <div>Eeman Iqbal<small>2020–21</small></div>
+    </div>
   </div>
 </section>
 
@@ -1290,7 +1301,15 @@ document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click
 const SHOW_TODO = true;
 const PEOPLE = {
   'clair-ma':      { bio: '', interests: [], education: [], links: {} },
-  'shaoxiu-wei':   { bio: '', interests: [], education: [], links: {} },
+  'shaoxiu-wei': {
+    title: 'PhD Candidate',
+    bio: 'Shaoxiu Wei is a 4th-year PhD Candidate in the Electrical and Computer Engineering Department at UC San Diego.',
+    interests: 'His research interests include multimodal sensing, Bayesian inference, and statistical signal processing.',
+    education: [
+      { degree: 'BS in Communication Engineering', year: '2022', school: '' },   // university not given yet
+    ],
+    links: {},
+  },
   'luisa-watkins': {
     title: 'PhD Candidate',
     bio: 'Luisa Watkins is a 5th-year PhD Candidate in Signal & Image Processing in the Electrical and Computer Engineering Department at UC San Diego. The goal of her PhD work is to research and apply signal processing techniques to underwater acoustics problems. To complement her research studies, she is also pursuing an MS in Oceanography at the Scripps Institution of Oceanography, also at UC San Diego.',
@@ -1305,8 +1324,21 @@ const PEOPLE = {
   },
   'khoa-nguyen':   { bio: '', interests: [], education: [], links: {} },
   'ryan-pai':      { bio: '', interests: [], education: [], links: {} },
-  'avik-ghosh':    { bio: '', interests: [], education: [], links: {} },
-  'mitchell-turton': { bio: '', interests: [], education: [], links: {} },
+  'avik-ghosh': {
+    bio: 'Avik Ghosh is a 2nd-year MS Student in Signal & Image Processing in the Electrical and Computer Engineering Department at UC San Diego. His research focuses on statistical inference for sparse signal recovery, particularly sparse Bayesian learning and message passing on graphical models. He also works part-time at Keysight Technologies, developing drivers for measurement instruments such as oscilloscopes and spectrum analyzers.',
+    interests: 'His research interests include statistical signal processing, Bayesian estimation, and probabilistic graphical models. He is particularly interested in developing sparse signal recovery algorithms that exploit structure in the underlying signals, with applications in wireless communications and underwater acoustics. Outside of research, he enjoys reading fiction, experimenting with coffee drinks, and learning to play the guitar.',
+    education: [
+      { degree: 'MS in Electrical and Computer Engineering (Signal and Image Processing)', year: 'expected 2027', school: 'UC San Diego' },
+      { degree: 'BS in Electrical Engineering (Signal and Image Processing)', year: '2025', school: 'UC San Diego' },
+    ],
+    links: {},
+  },
+  'mitchell-turton': {
+    bio: 'Mitchell Turton is a 4th-year Computer Engineering student at the Georgia Institute of Technology. His work focuses on developing algorithms for navigation and state estimation in GPS-denied environments, with a particular interest in marine robotics. Through his research and project experience, he has worked on localization and navigation problems for autonomous systems, including underwater vehicles. His goal is to continue developing robust estimation and navigation methods for autonomous systems operating in challenging environments.',
+    interests: 'His research interests include GPS-denied navigation, state estimation, and marine robotics. He is particularly interested in probabilistic estimation, sensor fusion, and localization techniques that allow autonomous systems to operate reliably when traditional navigation infrastructure is unavailable. Within marine robotics, he is interested in applying these methods to autonomous underwater vehicles and other robotic platforms operating in complex and uncertain environments. More broadly, his goal is to develop practical navigation and estimation algorithms that improve the autonomy and reliability of robotic systems.',
+    education: [],
+    links: {},
+  },
 };
 (() => {
   const drawer = document.getElementById('profile'), scrim = document.getElementById('profile-scrim');
