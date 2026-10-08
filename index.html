@@ -1302,7 +1302,16 @@ document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click
    Empty fields are hidden; while SHOW_TODO is true they show as dashed placeholders instead (set it to false before going live). */
 const SHOW_TODO = true;
 const PEOPLE = {
-  'clair-ma':      { bio: '', interests: [], education: [], links: {} },
+  'clair-ma': {
+    bio: 'Clair Ma is a 4th-year PhD student in the Applied Ocean Sciences joint program between the Electrical and Computer Engineering Department and the Scripps Institution of Oceanography at UC San Diego. Her work focuses on applying signal processing and estimation techniques towards problems in underwater acoustics and physical oceanography. Her projects have included topics ranging from multiobject tracking for beaked whales to environmental characterization through acoustic methods.',
+    interests: 'Clair’s research interests include algorithmic development, ocean observation and estimation, signal processing, and remote sensing. Her goal is to develop effective methods for data analysis and prediction to better understand the ocean in a changing climate.',
+    education: [
+      { degree: 'PhD in Electrical Engineering (Applied Ocean Sciences)', year: 'in progress', school: 'UC San Diego' },
+      { degree: 'MS in Electrical Engineering (Applied Ocean Sciences)', year: '2025', school: 'UC San Diego' },
+      { degree: 'BS in Computer Engineering', year: '2023', school: 'UC San Diego' },
+    ],
+    links: {},
+  },
   'shaoxiu-wei': {
     title: 'PhD Candidate',
     bio: 'Shaoxiu Wei is a 4th-year PhD Candidate in the Electrical and Computer Engineering Department at UC San Diego.',
