@@ -521,6 +521,7 @@
     background: linear-gradient(145deg, #aef7ec, #5cc7d6); position: relative; }
   .mate:hover .av::after, .mate:focus-visible .av::after { content: ""; position: absolute; inset: -8px; border-radius: 50%; border: 1px solid var(--glow); animation: pulse 1.6s ease-out infinite; }
   .mate b { display: block; font-weight: 500; }
+  .team.staff .mate { flex-basis: 168px; }   /* longer names and titles; only two cards, so the extra width is free */
   .mate small { color: var(--muted); font-size: 12.5px; line-height: 1.4; display: block; margin-top: 2px; }
   .mate .more { display: block; margin-top: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--glow); opacity: 0; transform: translateY(-3px); transition: opacity .25s, transform .25s; }
   .mate .more::after { content: " →"; }
@@ -1034,6 +1035,12 @@
       <button type="button" class="mate" data-person="mitchell-turton" aria-haspopup="dialog" aria-controls="profile"><span class="av">MT<img src="photos/mitchell-turton.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Mitchell Turton</b><small>Undergraduate Researcher</small><span class="more">Profile</span></button>
     </div>
 
+    <div class="sub">Engineering staff</div>
+    <div class="team staff rise">
+      <button type="button" class="mate" data-person="dennis-rimington" aria-haspopup="dialog" aria-controls="profile"><span class="av">DR<img src="photos/dennis-rimington.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>Dennis Rimington</b><small>Senior Development Engineer</small><span class="more">Profile</span></button>
+      <button type="button" class="mate" data-person="david-price" aria-haspopup="dialog" aria-controls="profile"><span class="av">DP<img src="photos/david-price.jpg" alt="" loading="lazy" onerror="this.remove()"></span><b>David Price</b><small>Senior Electronics Technician</small><span class="more">Profile</span></button>
+    </div>
+
     <div class="sub">Postdoc alumni</div>
     <div class="alum rise">
       <div><a target="_blank" rel="noopener" href="https://scholar.google.com/citations?user=fv3gMOEAAAAJ">Xuhong Li</a><small>2024–26 · Assistant Professor, Lund University</small></div>
@@ -1297,11 +1304,30 @@ document.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click
    highlights come from News items that mention the student (as "L. Watkins" or by full name), and papers from the Publications list (by highlighted author name).
    Format: title: 'PhD Candidate' (optional; replaces "PhD Student" / "MS Student" in the panel)
            bio: 'One or two sentences.'   interests: ['Topic', ...] (shown as chips) or 'A sentence or two.' (shown as text)
+           interestsLabel: 'Expertise' (optional; heading of the interests section, default "Interests")
            education: [{ degree: 'MS in Electrical Engineering', year: '2022', school: 'UC San Diego' }, ...]
            links: { email: 'name@ucsd.edu', scholar: 'https://...', github: 'https://...', linkedin: 'https://...', web: 'https://...' }
    Empty fields are hidden; while SHOW_TODO is true they show as dashed placeholders instead (set it to false before going live). */
 const SHOW_TODO = true;
 const PEOPLE = {
+  'dennis-rimington': {
+    bio: 'Dennis Rimington is a Senior Development Engineer at the Marine Physical Laboratory of the Scripps Institution of Oceanography, UC San Diego, where he has worked since 2001. He has served as an engineer on more than 25 experiments in ocean acoustics, autonomous underwater vehicle design and testing, and seafloor geophysics. His recent projects include the Offshore Subduction Zone Observatory in the Cascadia Cabled Array (NSF), community seafloor geodetic measurement of deformation (NSF), and the Flying Wing autonomous underwater glider program (ONR).',
+    interestsLabel: 'Expertise',
+    interests: ['Embedded systems', 'Vehicle design', 'Autonomous and towed acoustic systems', 'Hardware and software design', 'Acoustic signal and array processing', 'Data analysis', 'Computer management'],
+    education: [
+      { degree: 'BS in Computer Engineering', year: '2001', school: 'University of Nebraska' },
+    ],
+    links: {},
+  },
+  'david-price': {
+    bio: 'David Price is a Senior Electronics Technician at the Marine Physical Laboratory of the Scripps Institution of Oceanography, UC San Diego. After serving in the U.S. Navy from 1989 to 1995, he joined the Marine Physical Laboratory as an Associate Electronics Technician and has held his current position since 2006. He has served as electronics and hardware technician on more than 40 ocean acoustics, autonomous platform, and geophysics experiments. His recent projects include community seafloor geodetic measurement of deformation (NSF), acoustics-based seafloor geodesy (NSF), and the Flying Wing autonomous underwater glider program (ONR).',
+    interestsLabel: 'Expertise',
+    interests: ['Mechanical engineering', 'Ocean engineering', 'Electrical and mechanical design and assembly', 'SolidWorks and Flow Simulation', 'Altium circuit board design'],
+    education: [
+      { degree: 'AA in Computer Electronics', year: '1990', school: 'High Tech Institute, Phoenix, AZ' },
+    ],
+    links: {},
+  },
   'clair-ma': {
     bio: 'Clair Ma is a 4th-year PhD student in the Applied Ocean Sciences joint program between the Electrical and Computer Engineering Department and the Scripps Institution of Oceanography at UC San Diego. Her work focuses on applying signal processing and estimation techniques towards problems in underwater acoustics and physical oceanography. Her projects have included topics ranging from multiobject tracking for beaked whales to environmental characterization through acoustic methods.',
     interests: 'Clair’s research interests include algorithmic development, ocean observation and estimation, signal processing, and remote sensing. Her goal is to develop effective methods for data analysis and prediction to better understand the ocean in a changing climate.',
@@ -1392,8 +1418,9 @@ const PEOPLE = {
     // about, interests, education
     if (d.bio) body.append(section('About', el('p', null, d.bio)));
     else if (SHOW_TODO) body.append(section('About', el('p', 'pf-todo', 'Short bio to be added.')));
-    if (typeof d.interests === 'string' && d.interests) body.append(section('Interests', el('p', null, d.interests)));
-    else if (d.interests && d.interests.length) { const c = el('div', 'chips'); d.interests.forEach(t => c.append(el('span', null, t))); body.append(section('Interests', c)); }
+    const interestsLabel = d.interestsLabel || 'Interests';
+    if (typeof d.interests === 'string' && d.interests) body.append(section(interestsLabel, el('p', null, d.interests)));
+    else if (d.interests && d.interests.length) { const c = el('div', 'chips'); d.interests.forEach(t => c.append(el('span', null, t))); body.append(section(interestsLabel, c)); }
     else if (SHOW_TODO) body.append(section('Interests', el('p', 'pf-todo', 'Research interests to be added.')));
     if (d.education && d.education.length) {
       const ul = el('ul', 'pf-list');
